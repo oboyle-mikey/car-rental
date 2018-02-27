@@ -26,6 +26,12 @@
 
 <table style="width: 28%; height: 322px">
 	<tr>
+		<td style="width: 130px">Client Name</td>
+		<td style="width: 253px">
+			<input type="Date" name="name" required/></td>
+	</tr>
+
+	<tr>
 		<td style="width: 130px">Start Date</td>
 		<td style="width: 253px">
 			<input type="Date" name="start_date" required/></td>
@@ -38,19 +44,19 @@
 	<tr>
 		<td style="width: 130px">Car Group Name</td>
 		<td style="width: 253px">
-			<input name="start_mileage" type="text" required/>
+			<input name="car_group_name" type="text" required/>
 		</td>
 	</tr>
 	<tr>
-		<td style="width: 130px">Location</td>
+		<td style="width: 130px">Location ID</td>
 		<td style="width: 253px">
-			<input name="start_mileage" type="text" required/>
+			<input name="office_ID" type="text" required/>
 		</td>
 	</tr>
 	<tr>
 		<td style="width: 130px">Card Details</td>
 		<td style="width: 253px">
-			<input name="start_mileage" type="text" required/>
+			<input name="bank_ac_no" type="text" required/>
 		</td>
 	</tr>
 	
