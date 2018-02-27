@@ -16,7 +16,7 @@
 
 <body>
 
-<?php include(navbar.php) ?>
+<?php include('navbar.php') ?>
 
 <form method="post" style="height: 379px" action="reservationPost.php">
 
