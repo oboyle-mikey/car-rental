@@ -2,11 +2,11 @@
 
 $host = "localhost";
 
-$database = "hrs_db";
+$database = "st3001_1718_group_3_db";
 
-$user = "root";
+$user = "group_3";
 
-$password = "eexee0Oo";
+$password = "vaeF9eip";
 
 
 
