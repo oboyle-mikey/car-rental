@@ -3,6 +3,7 @@
 include ("detail.php"); 
 
 session_start();
+$_SESSION['form_validation_err'] = 0;
 
 
 if(empty($_POST['model'])){
