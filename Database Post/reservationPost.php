@@ -3,6 +3,7 @@
 include ("detail.php"); 
 
 session_start();
+$_SESSION['form_validation_err'] = 0;
 
 if(empty($_POST['car_group_name'])){
 	$_SESSION['form_validation_err'] = 1;
@@ -50,6 +51,8 @@ $sql = "SELECT rate_ID from fleet WHERE fleet_ID = '.$fleet_ID.'";
 		
 //can't calculate price until the car is returned
 
+//Set employee variable
+$employee = $_SESSION["employee_no"];
 
 
 function test_input($data){
@@ -65,7 +68,7 @@ if($_SESSION['form_validation_err'] == 0){
 	$q  = "INSERT INTO reservations (";
 	$q .= "fleet_ID, client_ID, employee_ID, office_ID, start_date, end_date, start_mileage, end_mileage, rate_ID";
 	$q .= ") VALUES (";
-	$q .= "'$fleet_ID','$client_ID','$_SESSION['access']', '$office_ID', '$start_date', '$end_date', '$start_mileage', '$end_mileage', $rate_ID)";
+	$q .= "'$fleet_ID','$client_ID','$employee', '$office_ID', '$start_date', '$end_date', '$start_mileage', '$end_mileage', '$rate_ID')";
 
 	$result = $db->query($q);
 	
@@ -73,9 +76,6 @@ if($_SESSION['form_validation_err'] == 0){
 	//if it works then it would be similar code for updating the price and start/end mileage
 	$t = "UPDATE clients set bank_ac_no = '.$bank_ac_no.' WHERE client_ID = '.$client_ID.'";
 	$result = $db->query($t);
-
-
-
 
 }else{
 	header('Location: Home.php');

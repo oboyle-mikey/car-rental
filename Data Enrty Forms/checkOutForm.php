@@ -18,7 +18,7 @@
 
 <?php include('navbar.php') ?>
 
-<form method="post" style="height: 379px" action="reservationPost.php">
+<form method="post" style="height: 379px" action="checkOutPostPost.php">
 
 <h2>Check Out</h2>
 
@@ -27,12 +27,12 @@
 	<tr>
 		<td style="width: 130px">Reservation ID</td>
 		<td style="width: 253px">
-			<input type="text" name="start_date" required/></td>
+			<input type="text" name="reservation_ID" required/></td>
 	</tr>
 	<tr>
 		<td style="width: 130px">Start Mileage</td>
 		<td style="width: 253px">
-			<input type="text" name="end_date" required/></td>
+			<input type="text" name="start_mileage" required/></td>
 	</tr>
 	
 	</table>
