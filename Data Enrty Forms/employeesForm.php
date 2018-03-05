@@ -35,7 +35,7 @@
 	<tr>
 		<td style="width: 130px">Position</td>
 		<td style="width: 253px">
-			<input name="position" type="date" required/>
+			<input name="position" type="text" required/>
 		</td>
 	</tr>
 	<tr>
