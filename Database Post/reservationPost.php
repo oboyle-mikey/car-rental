@@ -5,6 +5,14 @@ include ("detail.php");
 session_start();
 $_SESSION['form_validation_err'] = 0;
 
+
+
+if(empty($_POST['name'])){
+	$_SESSION['form_validation_err'] = 1;
+}else{
+	$name = test_input($_POST['name']);
+}
+
 if(empty($_POST['car_group_name'])){
 	$_SESSION['form_validation_err'] = 1;
 }else{
@@ -34,21 +42,28 @@ For start and end mileage maybe save it initially as 0, then update it from the 
 
 //gets fleet ID	This select statement doesn't check availability
 	
-$sql = "SELECT fleet_ID from fleet WHERE car_group_name = '$car_group_name' LIMIT 1";
+$sql = "SELECT fleet_ID from fleet WHERE car_group_name = '".$car_group_name."' LIMIT 1";
 		$result = $db->query($sql);
 		$fleet_ID = mysqli_fetch_assoc($result);
-		echo $sql;
+		//echo $sql;
+		$fleet_ID = $fleet_ID['fleet_ID'];
 		
 //gets client_ID using name	
-$sql = "SELECT client_ID from clients WHERE name = '$name'";
+$sql = "SELECT client_ID from clients WHERE name = '".$name."'";
 		$result = $db->query($sql);
 		$client_ID = mysqli_fetch_assoc($result);
+		//echo $sql;
+		$client_ID = $client_ID['client_ID'];
 
 		
 // gets the rate_ID of the car chosen from fleet, rate_ID isn't currently in the fleet table in sql
-$sql = "SELECT rate_ID from fleet WHERE fleet_ID = '$fleet_ID'";
+$sql = "SELECT car_group_name from fleet WHERE fleet_ID = '".$fleet_ID."'";
 		$result = $db->query($sql);
 		$rate_ID = mysqli_fetch_assoc($result);
+		//echo $sql;
+		$rate_ID = $rate_ID['car_group_name'];
+		echo $rate_ID;
+
 		
 //can't calculate price until the car is returned
 
@@ -74,7 +89,7 @@ if($_SESSION['form_validation_err'] == 0){
 	
 	//Not sure of this works, tried to add bank account to clients table
 	//if it works then it would be similar code for updating the price and start/end mileage
-	$t = "UPDATE clients set bank_ac_no = '.$bank_ac_no.' WHERE client_ID = '.$client_ID.'";
+	$t = "UPDATE clients set bank_ac_no = '".$bank_ac_no."' WHERE client_ID = '".$client_ID."'";
 	$result = $db->query($t);
 
 }else{
