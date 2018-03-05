@@ -2,7 +2,7 @@
 
 $host = "localhost";
 
-$database = "st3001_1718_group_3db";
+$database = "st3001_1718_group_3_db";
 
 $user = "group_3";
 
