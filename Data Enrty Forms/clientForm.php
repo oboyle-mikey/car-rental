@@ -20,7 +20,7 @@
 
 <form method="post" style="height: 379px" action="clientPost.php">
 
-<h2>Add Client</h2>
+<h2>Add Client Test</h2>
 
 
 <table style="width: 28%; height: 322px">

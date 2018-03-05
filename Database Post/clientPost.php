@@ -61,7 +61,7 @@ if($_SESSION['form_validation_err'] == 0){
 	$q  = "INSERT INTO clients (";
 	$q .= "name, email, address, county, phone_no, age, bank_ac_no";
 	$q .= ") VALUES (";
-	$q .= "'$name', '$email', '$address', '$county', '$phone_no', '$age', '$bank_ac_no'";
+	$q .= "'$name', '$email', '$address', '$county', '$phone_no', '$age', '$bank_ac_no')";
 
 	$result = $db->query($q);
 
