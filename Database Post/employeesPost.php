@@ -49,9 +49,11 @@ if($_SESSION['form_validation_err'] == 0){
 	$q  = "INSERT INTO employees (";
 	$q .= "office_ID, name, position, grade, base_salery, commission";
 	$q .= ") VALUES (";
-	$q .= "'$office_ID', '$name', '$position', '$grade', '$base_salery', '$commission'";
+	$q .= "'$office_ID', '$name', '$position', '$grade', '$base_salery', '$commission')";
 
 	$result = $db->query($q);
+
+	echo($q);
 
 }else{
 	header('Location: Home.php');
