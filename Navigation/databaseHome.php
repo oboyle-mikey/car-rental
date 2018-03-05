@@ -19,18 +19,28 @@
 <?php include('navbar.php') ?>
 
 
-<h2>Client Management</h2>
+<h2>Database Management</h2>
 
 
 <table style="width: 28%; height: 322px">
 	<tr>
         <td>
-	        <a href = "clientForm.php">New Client</a>
+	        <a href = "employeesForm.php">New Employee</a>
         </td>
 	</tr>
     <tr>
         <td>
-                <a href = "sendPromo.php">Send Promotional Mail</a>
+                <a href = "fleetForm.php">New Car</a>
+        </td>
+	</tr>
+    <tr>
+        <td>
+                <a href = "officeForm.php">New Office</a>
+        </td>
+	</tr>
+    <tr>
+        <td>
+                <a href = "clientForm.php">New Client</a>
         </td>
 	</tr>
 	</table>

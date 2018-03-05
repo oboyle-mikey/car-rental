@@ -54,7 +54,6 @@ $sql = "SELECT rate_ID from fleet WHERE fleet_ID = '.$fleet_ID.'";
 //Set employee variable
 $employee = $_SESSION["employee_no"];
 
-
 function test_input($data){
 	$data = trim($data);
 	$data = stripslashes($data);
@@ -72,7 +71,7 @@ if($_SESSION['form_validation_err'] == 0){
 
 	$result = $db->query($q);
 	
-	// not sure of this works, tried to add bank account to clients table
+	//Not sure of this works, tried to add bank account to clients table
 	//if it works then it would be similar code for updating the price and start/end mileage
 	$t = "UPDATE clients set bank_ac_no = '.$bank_ac_no.' WHERE client_ID = '.$client_ID.'";
 	$result = $db->query($t);
