@@ -42,7 +42,7 @@ if($_SESSION['form_validation_err'] == 0){
 	$q  = "INSERT INTO offices (";
 	$q .= "address, manager, phone, email";
 	$q .= ") VALUES (";
-	$q .= "'$address', '$manager', '$phone', '$email'";
+	$q .= "'$address', '$manager', '$phone', '$email')";
 
 	$result = $db->query($q);
 

@@ -28,7 +28,7 @@
 	<tr>
 		<td style="width: 130px">Client Name</td>
 		<td style="width: 253px">
-			<input type="Date" name="name" required/></td>
+			<input type="text" name="name" required/></td>
 	</tr>
 
 	<tr>

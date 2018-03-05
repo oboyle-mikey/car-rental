@@ -34,18 +34,19 @@ For start and end mileage maybe save it initially as 0, then update it from the 
 
 //gets fleet ID	This select statement doesn't check availability
 	
-$sql = "SELECT fleet_ID from fleet WHERE car_group_name = '.$car_group_name.' LIMIT 1";
+$sql = "SELECT fleet_ID from fleet WHERE car_group_name = '$car_group_name' LIMIT 1";
 		$result = $db->query($sql);
 		$fleet_ID = mysqli_fetch_assoc($result);
+		echo $sql;
 		
 //gets client_ID using name	
-$sql = "SELECT client_ID from clients WHERE name = '.$name.'";
+$sql = "SELECT client_ID from clients WHERE name = '$name'";
 		$result = $db->query($sql);
 		$client_ID = mysqli_fetch_assoc($result);
 
 		
 // gets the rate_ID of the car chosen from fleet, rate_ID isn't currently in the fleet table in sql
-$sql = "SELECT rate_ID from fleet WHERE fleet_ID = '.$fleet_ID.'";
+$sql = "SELECT rate_ID from fleet WHERE fleet_ID = '$fleet_ID'";
 		$result = $db->query($sql);
 		$rate_ID = mysqli_fetch_assoc($result);
 		
