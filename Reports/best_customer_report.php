@@ -55,6 +55,31 @@ li a:hover {
 
 <?php include('navbar.php') ?>
 
+<?PHP
+
+
+include ("detail.php"); 
+
+##$query = "select price, client_ID from reservations";
+
+##$result = $db->query($query);
+##$num_results = mysqli_num_rows ($result);
+
+
+##for($i = 0 ; $i < $num_results; $i++)
+#{
+  ## totalRevenue =  sum $row['price'] where $i == $row['client_ID']
+   
+#}
+
+
+$query = "select client_ID, email, name, county from clients LIMIT 5";
+$result = $db->query($query);
+
+$num_results = mysqli_num_rows ($result);
+
+
+?>
 
 <p class="auto-style5" style="width: 222px; height: 29px">Best Customer</p>
 
@@ -69,51 +94,27 @@ li a:hover {
 
 </tr>
 
+<?php
+
+for ($i=0; $i <$num_results; $i++)
+{
+$row = mysqli_fetch_assoc($result);
+
+?>
+
 <tr>
 
-<td style="width:219px" class="auto-style7"> Colin Henry</td>
-<td style="width:220px" class="auto-style7"> Dublin</td>
-<td style="width:220px" class="auto-style7"> <a href="mailto:colin_dublin@henryltd.ie">
-colin-dublin@henryltd.ie</a></td>
+<td style="width:219px" class="auto-style7"> <?php echo ($row['name']); ?></td>
+<td style="width:220px" class="auto-style7"> <?php echo ($row['county']); ?></td>
+<td style="width:220px" class="auto-style7"> <a href=<?php echo ($row['email']); ?></td>
 <td style="width:220px" class="auto-style7"> €400.00</td>
 
 </tr>
 
-<tr>
-
-<td style="width:219px" class="auto-style7"> Freddy Fisher</td>
-<td style="width:220px" class="auto-style7"> Galway</td>
-<td style="width:220px" class="auto-style7"> <a href="mailto:fredfish@tcd.ie">fredfish@tcd.ie</a></td>
-<td style="width:220px" class="auto-style7"> €300.00</td>
-
-</tr>
-
-<tr>
-
-<td style="width:219px; height: 23px;" class="auto-style7"> Harry Goodie</td>
-<td style="width:220px; height: 23px;" class="auto-style7"> Louth</td>
-<td style="width:220px; height: 23px;"> g<span class="auto-style7"><a href="mailto:GoogieTwoShoes@gmail.com">oodieTwoShoes@gmail.com</a></span></td>
-<td style="width:220px; height: 23px;" class="auto-style7"> €652.50</td>
-
-</tr>
-
-<tr>
-
-<td style="width:219px; height: 23px;" class="auto-style7"> James Dawson</td>
-<td style="width:220px; height: 23px;" class="auto-style7"> Mayo</td>
-<td style="width:220px; height: 23px;" class="auto-style7"> <a href="mailto:james-james@tcd.ie">
-james-james@tcd.ie</a></td>
-<td style="width:220px; height: 23px;" class="auto-style7"> €250.50</td>
-</tr>
-
-<tr>
-
-<td style="width:219px; height: 23px;"> </td>
-<td style="width:220px; height: 23px;"> </td>
-<td style="width:220px; height: 23px;" class="auto-style7"> <strong>Total Revenue</strong></td>
-<td style="width:220px; height: 23px;" class="auto-style7"> <strong>€1,603.00</strong></td>
-
-</tr>
+<?php
+echo '</p>';
+}
+?>
 
 </table>
 
