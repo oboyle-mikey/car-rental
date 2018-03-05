@@ -5,8 +5,6 @@ include ("detail.php");
 session_start();
 $_SESSION['form_validation_err'] = 0;
 
-echo('Testa');
-
 if(empty($_POST['name'])){
 	$_SESSION['form_validation_err'] = 1;
 }else{
@@ -43,7 +41,6 @@ if(empty($_POST['bank_ac_no'])){
 	$bank_ac_no = test_input($_POST['bank_ac_no']);
 }
 
-echo('Test1');
 
 function test_input($data){
 	$data = trim($data);
@@ -52,11 +49,9 @@ function test_input($data){
 	return $data;
 }
 
-echo('Test2');
 
 if($_SESSION['form_validation_err'] == 0){
 
-	echo('Test3');
 
 	$q  = "INSERT INTO clients (";
 	$q .= "name, email, address, county, phone_no, age, bank_ac_no";
