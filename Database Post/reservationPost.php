@@ -45,14 +45,13 @@ For start and end mileage maybe save it initially as 0, then update it from the 
 $sql = "SELECT fleet_ID from fleet WHERE car_group_name = '".$car_group_name."' LIMIT 1";
 		$result = $db->query($sql);
 		$fleet_ID = mysqli_fetch_assoc($result);
-		//echo $sql;
+		
 		$fleet_ID = $fleet_ID['fleet_ID'];
 		
 //gets client_ID using name	
 $sql = "SELECT client_ID from clients WHERE name = '".$name."'";
 		$result = $db->query($sql);
 		$client_ID = mysqli_fetch_assoc($result);
-		//echo $sql;
 		$client_ID = $client_ID['client_ID'];
 
 		
@@ -60,9 +59,8 @@ $sql = "SELECT client_ID from clients WHERE name = '".$name."'";
 $sql = "SELECT car_group_name from fleet WHERE fleet_ID = '".$fleet_ID."'";
 		$result = $db->query($sql);
 		$rate_ID = mysqli_fetch_assoc($result);
-		//echo $sql;
 		$rate_ID = $rate_ID['car_group_name'];
-		echo $rate_ID;
+		
 
 		
 //can't calculate price until the car is returned
