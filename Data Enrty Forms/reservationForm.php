@@ -50,7 +50,7 @@
 	<tr>
 		<td style="width: 130px">Location ID</td>
 		<td style="width: 253px">
-		<select name="EventID" style="width: 150px">
+		<select name="location" style="width: 150px">
 			
 			
 			<?php 

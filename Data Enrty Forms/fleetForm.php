@@ -26,30 +26,30 @@
 <table style="width: 28%; height: 322px">
 	<tr>
 		<td style="width: 130px">Model</td>
-				<td class="auto-style15" style="width: 261px">
-		<select name="EventID" style="width: 150px">
+		<td style="width: 253px">
+			<input name="model" type="text" required/></td>
+	</tr>
+	<tr>
+		<td style="width: 130px">Car Group name</td>
+		<td style="width: 253px">
+			<select name="location" style="width: 150px">
 			
 			
 			<?php 
 	include("detail.php");
-    $sql = "SELECT * FROM rates ORDER BY rate_ID desc";
+    $sql = "SELECT * FROM rates";
     $result = $db->query($sql);
     
     while($row = mysqli_fetch_assoc($result)) {
         ?>
 
-					<option value="<?php echo $row['rate_ID'];?>"> 
+					<option value="<?php echo $row['rate_ID'];?>"> <?php echo $row['rate_ID'];?> 
 					</option>
  
 <?php
 }
 ?>
 					</select></td>
-	</tr>
-	<tr>
-		<td style="width: 130px">Car Group name</td>
-		<td style="width: 253px">
-			<input name="car_group_name" type="text" required/></td>
 	</tr>
 	<tr>
 		<td style="width: 130px">Maintanance Interval</td>
