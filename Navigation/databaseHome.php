@@ -39,7 +39,7 @@
                 <a href = "fleetForm.php">New Car</a>
         </td>
          <td>
-        	<a href = "deleteCar.php">Delete Car</a>
+        	<a href = "deleteCar.php">Remove Car</a>
 	</td>
         <td>
         	<a href = "changeFleet.php">Change Car</a>
@@ -50,7 +50,7 @@
                 <a href = "officeForm.php">New Office</a>
         </td>
          <td>
-        	<a href = "deleteOffice.php">Delete Office</a>
+        	<a href = "deleteOffice.php">Remove Office</a>
 	</td>
         <td>
         	<a href = "changeOffice.php">Change Office</a>
