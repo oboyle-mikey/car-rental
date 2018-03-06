@@ -60,20 +60,8 @@ li a:hover {
 
 include ("detail.php"); 
 
-##$query = "select price, client_ID from reservations";
 
-##$result = $db->query($query);
-##$num_results = mysqli_num_rows ($result);
-
-
-##for($i = 0 ; $i < $num_results; $i++)
-#{
-  ## totalRevenue =  sum $row['price'] where $i == $row['client_ID']
-   
-#}
-
-
-$query = "select client_ID, email, name, county from clients LIMIT 5";
+$query = "select client_ID, email, name, county , totalIncome from clients Order By totalIncome LIMIT 5";
 $result = $db->query($query);
 
 $num_results = mysqli_num_rows ($result);
@@ -107,7 +95,7 @@ $row = mysqli_fetch_assoc($result);
 <td style="width:219px" class="auto-style7"> <?php echo ($row['name']); ?></td>
 <td style="width:220px" class="auto-style7"> <?php echo ($row['county']); ?></td>
 <td style="width:220px" class="auto-style7"> <a href=<?php echo ($row['email']); ?></td>
-<td style="width:220px" class="auto-style7"> €400.00</td>
+<td style="width:220px" class="auto-style7"> <?php echo ($row['totalIncome']); ?></td>
 
 </tr>
 

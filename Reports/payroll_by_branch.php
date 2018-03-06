@@ -8,36 +8,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-<title>Untitled 1</title>
-<style type="text/css">
-.auto-style1 {
-	text-align: left;
+<style>
+ul { 
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+.auto-style5 {
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 	font-size: x-large;
-	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-.auto-style3 {
+.auto-style6 {
 	text-align: left;
-}
-.auto-style4 {
-	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 .auto-style7 {
 	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-.auto-style8 {
-	font-size: medium;
-}
-.auto-style9 {
-	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-	font-size: medium;
-}
 </style>
+<meta content="en-ie" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <link rel = "stylesheet" type = "text/css" href = "style.css">
+<title>Date</title>
 </head>
 
-
 <body>
+
+
+<?php include('navbar.php') ?>
 
 
 <p class="auto-style1">Payroll by Office</p>
