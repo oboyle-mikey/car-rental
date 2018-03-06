@@ -49,7 +49,7 @@ $num_results = mysqli_num_rows($result);
 
 if($num_results == 1){
 	$fleet_ID = mysqli_fetch_assoc($result);
-}else if($num_results > 1){
+}else if($num_results > 1{
 	$fleet_ID = mysqli_fetch_assoc($result[0]);
 }else{
 	$fleet_ID = -1;
@@ -79,5 +79,12 @@ if($_SESSION['form_validation_err'] == 0 && $fleet_ID != -1){
 }else{
 	header('Location: Home.php');
 }
+	
+
+
+
+
+
+
 
 ?>
