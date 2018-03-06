@@ -21,6 +21,8 @@
 
 <body>
 
+<form method="post" style="height: 379px" action="employeesPost.php">
+
 
 
 <h2>Remove Employee</h2>
@@ -29,11 +31,12 @@
 	<tr>
 		<td style="width: 130px">Enter employee name:</td>
 		<td style="width: 253px">
-			<select name="name" style="width:161px; height: 20px;" class="auto-style8" required>
+			<select name="deletename" style="width:161px; height: 20px;" class="auto-style8" required>
 			
-			<?php while($row1 = mysqli_fetch_array($result1)){?>}
-			<option value="<?php echo $row1['name']; ?>"> <?php echo $row1['name']; ?></option>
+			<?php while($row1 = mysqli_fetch_array($result1)){?>
 			
+			<option value="<?php echo $row1['name']; ?>"> <?php  echo $row1['employee_ID'], ". ", $row1['name']; ?></option>
+		
 			<?php }?>
 			
 			</select>
@@ -44,8 +47,19 @@
 
 	<input name="Button1" type="submit" value="Delete" />
 	
-	
+	<?php 
+			
+			$sql = "DELETE FROM employees WHERE name = deletename";
 
+			if ($db->query($sql) === TRUE) {
+    			echo "Record deleted successfully";
+			} else {
+    			echo "Error deleting record: " . $db->error;
+			}
+			
+	?>
+	
+</form>
 
 
 </body>
