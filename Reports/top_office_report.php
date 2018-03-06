@@ -54,6 +54,22 @@ li a:hover {
 
 <table align="center">
 
+<?php
+include ("detail.php"); 
+$Startdate  =  $Enddate =  "";
+
+
+
+echo($startDate);
+
+
+$query = "select offices.address, offices.manager, offfices.sales FROM offices";
+$result = $db->query($query);
+
+$num_results = mysqli_num_rows ($result);
+
+?>
+
 <tr>
 
 <th style="width:220px" class="auto-style7"> Office</th>
@@ -63,25 +79,27 @@ li a:hover {
 
 </tr>
 
-<tr>
+<?php
 
-<td style="width:220px" class="auto-style7"> Dublin Airport</td>
-<td style="width:220px" class="auto-style7"> Dublin Airport</td>
+for ($i=0; $i <$num_results; $i++)
+{
+$row = mysqli_fetch_assoc($result);
 
-<td style="width:219px" class="auto-style7"> Harry Henry</td>
-<td style="width:220px" class="auto-style7"> €6520.50</td>
-
-</tr>
+?>
 
 <tr>
 
-<td style="width:220px" class="auto-style7"> Stephens Green</td>
-<td style="width:220px" class="auto-style7"> Stephens Green</td>
+<td style="width:219px" class="auto-style7"> <?php echo ($row['address']); ?></td>
+<td style="width:220px" class="auto-style7"> <?php echo ($row['manager']); ?></td>
+<td style="width:220px" class="auto-style7"> <a href=<?php echo ($row['sales']); ?>
 
-<td style="width:219px" class="auto-style7"> Freda Dawson</td>
-<td style="width:220px" class="auto-style7"> €4000.00</td>
 
 </tr>
+
+<?php
+echo '</p>';
+}
+?>
 
 
 

@@ -63,32 +63,26 @@ li a:hover {
 
 <p class="auto-style1">Start Date</p>
 
-
-<form method="post">
-
 <td style="width: 125px"></td>
 <input name="Startdate" type="date" />
 
 
 <p class="auto-style1">End Date</p>
-
 <input name="Enddate" type="date" />
-
-</form>
 
 <table align="center">
 
 <?php
 
-$Startdate  = $Enddate =  "";
+include ("detail.php"); 
 
-$startDate = $_POST['Startdate'];
-$endDate = $_POST['Enddate'];
+$Startdate  =  $Enddate =  "";
 
-$query = "Select ";
-$result = $db->query($query);
+$startDate = Startdate;
+$endDate = Enddate;
 
-$num_results = mysqli_num_rows ($result);
+echo($startDate);
+
 
 $query = "select clients.name , fleet.car_registration, reservations.reservation_ID, reservations.price , reservations.start_date from reservations, fleet, clients Where $startDate <= reservations.start_date AND $endDate>= reservations.start_date";
 $result = $db->query($query);
