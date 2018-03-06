@@ -34,8 +34,12 @@ if(empty($_POST['end_date'])){
 }
 	$start_mileage = 0;
 	$end_mileage=0;
-	$employee = $_SESSION["employee_no"];
+	$employee_ID = 0;
 	$price = 0;
+	$office_ID = 0;
+	$client_ID = 0;
+
+	echo('a');
 
 /*
 For start and end mileage maybe save it initially as 0, then update it from the check-out and check-in page
@@ -48,18 +52,28 @@ $sql .= "SELECT fleet_ID FROM reservations WHERE end_date > '$start_date' AND st
 $result = $db->query($sql);
 $num_results = mysqli_num_rows($result);
 
+echo('b');
+
 if($num_results == 1){
+	echo('c1');
 	$fleet_ID = mysqli_fetch_assoc($result);
 }else if($num_results > 1){
-	$fleet_ID = mysqli_fetch_assoc($result[0]);
+	echo('c2');
+	$fleet_ID = mysqli_fetch_assoc($result);
+	echo('c22');
 }else{
+	echo('c3');
 	$fleet_ID = -1;
 }
+
+echo('c1');
 
 //Get Rate ID
 $sql = "SELECT rate_ID from fleet WHERE fleet_ID = '$fleet_ID'";
 $result = $db->query($sql);
 $rate_ID = mysqli_fetch_assoc($result);
+
+echo('c');
 
 //Insert into database
 //$_SESSION['access'] is the value being posted for employee ID
@@ -76,6 +90,8 @@ if($_SESSION['form_validation_err'] == 0 && $fleet_ID != -1){
 	//if it works then it would be similar code for updating the price and start/end mileage
 	$t = "UPDATE clients set bank_ac_no = '.$bank_ac_no.' WHERE client_ID = '.$client_ID.'";
 	$result = $db->query($t);
+
+	echo('d');
 
 }else{
 	header('Location: Home.php');
