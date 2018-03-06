@@ -1,5 +1,4 @@
 <?php
-
 	session_start();
    
 ?>
@@ -18,6 +17,7 @@
 
 <?php include('navbar.php') ?>
 
+<form>
 
 <h2>Database Management</h2>
 
@@ -27,21 +27,33 @@
         <td>
 	        <a href = "employeesForm.php">New Employee</a>
         </td>
+        <td>
+        	<a href = "deleteEmployee.php">Remove Employee</a>
+	    </td>
 	</tr>
     <tr>
         <td>
                 <a href = "fleetForm.php">New Car</a>
         </td>
+         <td>
+        	<a href = "deleteCar.php">Delete Car</a>
+	    </td>
 	</tr>
     <tr>
         <td>
                 <a href = "officeForm.php">New Office</a>
         </td>
+         <td>
+        	<a href = "deleteOffice.php">Delete Office</a>
+	    </td>
 	</tr>
     <tr>
         <td>
                 <a href = "clientForm.php">New Client</a>
         </td>
+         <td>
+        	<a href = "deleteClient.php">Remove Client</a>
+	    </td>
 	</tr>
 	</table>
 	
