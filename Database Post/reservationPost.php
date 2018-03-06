@@ -34,7 +34,9 @@ For start and end mileage maybe save it initially as 0, then update it from the 
 
 //gets fleet ID	This select statement doesn't check availability
 	
-$sql = "SELECT fleet_ID from fleet WHERE car_group_name = '$car_group_name' LIMIT 1";
+$sql = "SELECT fleet_ID FROM fleet WHERE fleet_ID NOT IN (SELECT fleet_ID 
+															FROM reservations 
+															WHERE `end_date` > '2018-10-7' AND `start_date` < 2018-10-13)";
 		$result = $db->query($sql);
 		$fleet_ID = mysqli_fetch_assoc($result);
 		echo $sql;
