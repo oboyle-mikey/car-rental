@@ -61,17 +61,35 @@ li a:hover {
 
 
 
-Enter reporting start date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>
-<input name="Text1" type="text" value="20/12/2017" class="auto-style7" /><br class="auto-style7" />
-<br class="auto-style7" />
-<span class="auto-style7">Enter reporting end date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>
-<input name="Text2" type="text" value="20/1/2018" class="auto-style7" /><br class="auto-style7" />
-<br class="auto-style7" />
+<p class="auto-style1">Start Date</p>
 
+
+<form method="post">
+
+<td style="width: 125px"></td>
+<input name="Startdate" type="date" />
+
+
+<p class="auto-style1">End Date</p>
+
+<input name="Enddate" type="date" />
+
+</form>
 
 <table align="center">
+
+<?php
+
+$office = "";
+
+$office = $_POST['office'];
+
+$query = "";
+$result = $db->query($query);
+
+$num_results = mysqli_num_rows ($result);
+
+?>
 
 <tr>
 
@@ -81,31 +99,28 @@ Enter reporting start date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <th style="width:220px" class="auto-style7"> Cost of Rental </th>
 
 </tr>
+<?php
+
+for ($i=0; $i <$num_results; $i++)
+{
+$row = mysqli_fetch_assoc($result);
+
+?>
 
 <tr>
 
-<td style="width:220px" class="auto-style7"> Freddy Fisher</td>
-<td style="width:220px" class="auto-style7"> 171-D-36555</td>
-<td style="width:220px" class="auto-style7"> 542198</td>
-<td style="width:220px" class="auto-style7"> €2300.00</td>
+<td style="width:219px" class="auto-style7"> <?php echo ($row['name']); ?></td>
+<td style="width:220px" class="auto-style7"> <?php echo ($row['']); ?></td>
+<td style="width:220px" class="auto-style7"> <a href=<?php echo ($row['']); ?></td>
+<td style="width:220px" class="auto-style7"> €400.00</td>
 
 </tr>
 
-<tr>
+<?php
+echo '</p>';
+}
+?>
 
-<td style="width:220px" class="auto-style7"> Harry Goodie</td>
-<td style="width:220px" class="auto-style7"> 171-D-28534</td>
-<td style="width:220px" class="auto-style7"> 521478</td>
-<td style="width:220px" class="auto-style7"> €900.00</td>
-
-</tr>
-<tr>
-
-<td style="width:220px; height: 23px;" class="auto-style7"> James Dawson</td>
-<td style="width:220px; height: 23px;" class="auto-style7"> 171-D-03943</td>
-<td style="width:220px; height: 23px;" class="auto-style7"> 632145</td>
-<td style="width:220px; height: 23px;" class="auto-style7"> €1300.00</td>
-</tr>
 
 </table>
 
