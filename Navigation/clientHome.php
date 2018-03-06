@@ -30,7 +30,7 @@
 	</tr>
     <tr>
         <td>
-                <a href = "sendPromo.php">Send Promotional Mail</a>
+                <a href = "sendPromo.php">Client Targeting</a>
         </td>
 	</tr>
 	</table>

@@ -29,7 +29,10 @@
         </td>
         <td>
         	<a href = "deleteEmployee.php">Remove Employee</a>
-	    </td>
+	</td>
+        <td>
+        	<a href = "changeEmployee.php">Change Employee</a>
+	</td>
 	</tr>
     <tr>
         <td>
@@ -37,7 +40,10 @@
         </td>
          <td>
         	<a href = "deleteCar.php">Delete Car</a>
-	    </td>
+	</td>
+        <td>
+        	<a href = "changeFleet.php">Change Car</a>
+	</td>
 	</tr>
     <tr>
         <td>
@@ -45,7 +51,10 @@
         </td>
          <td>
         	<a href = "deleteOffice.php">Delete Office</a>
-	    </td>
+	</td>
+        <td>
+        	<a href = "changeOffice.php">Change Office</a>
+	</td>
 	</tr>
     <tr>
         <td>
@@ -53,7 +62,10 @@
         </td>
          <td>
         	<a href = "deleteClient.php">Remove Client</a>
-	    </td>
+	</td>
+        <td>
+        	<a href = "changeClient.php">Change Client</a>
+	</td>
 	</tr>
 	</table>
 	
