@@ -21,7 +21,7 @@ $sql = "SELECT office_ID from employee WHERE employee_ID = '".$employee_ID."'";
 
 
 //calculates pay
-$sql = "SUM price from reservations where employee_ID = '".$employee_ID."' AND start_date < DATEADD(month, -2, GETDATE()) ";
+$sql = "SUM(price) from reservations where employee_ID = '".$employee_ID."' AND start_date between DATE_ADD(LAST_DAY(DATE_SUB(CURDATE(), interval 30 day)), interval 1 day) AND CURDATE())";
 		$result = $db->query($sql);
 		$office_ID = mysqli_fetch_assoc($result);
 		$office_ID = $office_ID['office_ID'];
