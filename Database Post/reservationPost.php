@@ -34,12 +34,11 @@ if(empty($_POST['end_date'])){
 }
 	$start_mileage = 0;
 	$end_mileage=0;
-	$employee_ID = 0;
 	$price = 0;
-	$office_ID = 0;
-	$client_ID = 0;
 
-	echo('a');
+	$employee_ID = 0; //set based on log variable
+	$office_ID = 0;   //set based on log variable
+	$client_ID = 0;   //set based on selection drop down in form
 
 /*
 For start and end mileage maybe save it initially as 0, then update it from the check-out and check-in page
@@ -47,33 +46,25 @@ For start and end mileage maybe save it initially as 0, then update it from the 
 
 //gets fleet ID	This select statement doesn't check availability
 	
-$sql = "SELECT fleet_ID FROM fleet WHERE fleet_ID NOT IN (";
-$sql .= "SELECT fleet_ID FROM reservations WHERE end_date > '$start_date' AND start_date < '$end_date')";
+$sql = "SELECT fleet_ID, car_group_name FROM fleet WHERE fleet_ID NOT IN (";
+$sql .= "SELECT fleet_ID FROM reservations WHERE end_date > '$start_date' AND start_date < '$end_date' AND car_group_name = '$car_group_name') LIMIT 1";
 $result = $db->query($sql);
 $num_results = mysqli_num_rows($result);
+echo($sql);
+echo($num_results);
+echo($result['fleet_ID']);
+echo($result['car_group_name']);
+echo('test');
 
-echo('b');
 
 if($num_results == 1){
-	echo('c1');
-	$fleet_ID = mysqli_fetch_assoc($result);
-}else if($num_results > 1){
-	echo('c2');
-	$fleet_ID = mysqli_fetch_assoc($result);
-	echo('c22');
+	$fleet_ID = mysqli_fetch_assoc($result['fleet_ID']);
+	$rate_ID = mysqli_fetch_assoc($result['car_group_name']);
+	echo($fleet_ID);
+	echo($rate_ID);
 }else{
-	echo('c3');
 	$fleet_ID = -1;
 }
-
-echo('c1');
-
-//Get Rate ID
-$sql = "SELECT rate_ID from fleet WHERE fleet_ID = '$fleet_ID'";
-$result = $db->query($sql);
-$rate_ID = mysqli_fetch_assoc($result);
-
-echo('c');
 
 //Insert into database
 //$_SESSION['access'] is the value being posted for employee ID
@@ -86,14 +77,8 @@ if($_SESSION['form_validation_err'] == 0 && $fleet_ID != -1){
 
 	$result = $db->query($q);
 
-	//Not sure of this works, tried to add bank account to clients table
-	//if it works then it would be similar code for updating the price and start/end mileage
-	$t = "UPDATE clients set bank_ac_no = '.$bank_ac_no.' WHERE client_ID = '.$client_ID.'";
-	$result = $db->query($t);
-
-	echo('d');
-
 }else{
+	//Throw no cars available error
 	header('Location: Home.php');
 }
 

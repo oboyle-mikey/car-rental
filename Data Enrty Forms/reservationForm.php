@@ -48,15 +48,9 @@
 		</td>
 	</tr>
 	<tr>
-		<td style="width: 130px">Location ID</td>
+		<td style="width: 130px">Pickup Location</td>
 		<td style="width: 253px">
 			<input name="office_ID" type="text" required/>
-		</td>
-	</tr>
-	<tr>
-		<td style="width: 130px">Card Details</td>
-		<td style="width: 253px">
-			<input name="bank_ac_no" type="text" required/>
 		</td>
 	</tr>
 	
