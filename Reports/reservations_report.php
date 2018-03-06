@@ -80,11 +80,17 @@ li a:hover {
 
 <?php
 
-$office = "";
+$Startdate  = $Enddate =  "";
 
-$office = $_POST['office'];
+$startDate = $_POST['Startdate'];
+$endDate = $_POST['Enddate'];
 
-$query = "";
+$query = "Select ";
+$result = $db->query($query);
+
+$num_results = mysqli_num_rows ($result);
+
+$query = "select clients.name , fleet.car_registration, reservations.reservation_ID, reservations.price , reservations.start_date from reservations, fleet, clients Where $startDate <= reservations.start_date AND $endDate>= reservations.start_date";
 $result = $db->query($query);
 
 $num_results = mysqli_num_rows ($result);

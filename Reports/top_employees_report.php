@@ -49,65 +49,60 @@ li a:hover {
 <title>Date</title>
 </head>
 
+
 <body>
+
 
 <?php include('navbar.php') ?>
 
-<p class="auto-style5" style="width: 222px; height: 29px">Top Five Employees</p>
+<?PHP
+
+
+include ("detail.php"); 
+
+
+$query = "select employees.employee_ID, employees.name, employees.position, employees.office_ID, offices.office_ID, offices.address, employees.totalSales from offices, employees WHERE employees.office_ID = offices.office_ID ORDER By employees.totalSales LIMIT 5";
+$result = $db->query($query);
+
+$num_results = mysqli_num_rows ($result);
+
+
+?>
+
+<p class="auto-style5" style="width: 222px; height: 29px">Top 5 Employees</p>
 
 <table align="center">
 
 <tr>
 
 <th style="width:219px" class="auto-style7"> Employee Name </th>
-<th style="width:220px" class="auto-style7"> Position</th>
+<th style="width:220px" class="auto-style7"> Possition</th>
 <th style="width:220px" class="auto-style7"> Office</th>
-<th style="width:220px" class="auto-style7"> Total Sales</th>
+<th style="width:220px" class="auto-style7"> Total Sales </th>
 
 </tr>
+
+<?php
+
+for ($i=0; $i <$num_results; $i++)
+{
+$row = mysqli_fetch_assoc($result);
+
+?>
 
 <tr>
 
-<td style="width:219px" class="auto-style7"> Harry Henry</td>
-<td style="width:220px" class="auto-style7"> Booking Rep</td>
-<td style="width:220px" class="auto-style7"> Dublin</td>
-<td style="width:220px" class="auto-style7"> €6520.50</td>
+<td style="width:219px" class="auto-style7"> <?php echo ($row['name']); ?></td>
+<td style="width:220px" class="auto-style7"> <?php echo ($row['position']); ?></td>
+<td style="width:220px" class="auto-style7"> <a href=<?php echo ($row['office']); ?></td>
+<td style="width:220px" class="auto-style7"> <?php echo ($row['totalSales']); ?></td>
 
 </tr>
 
-<tr>
-
-<td style="width:219px" class="auto-style7"> Freda Dawson</td>
-<td style="width:220px" class="auto-style7"> Sales Rep</td>
-<td style="width:220px" class="auto-style7"> Galway</td>
-<td style="width:220px" class="auto-style7"> €4000.00</td>
-
-</tr>
-
-<tr>
-
-<td style="width:219px; height: 23px;" class="auto-style7"> Colin&nbsp; Goodie</td>
-<td style="width:220px; height: 23px;" class="auto-style7"> Booking Rep</td>
-<td style="width:220px; height: 23px;" class="auto-style7"> Louth</td>
-<td style="width:220px; height: 23px;" class="auto-style7"> €3100.00</td>
-
-</tr>
-
-<tr>
-
-<td style="width:219px; height: 23px;" class="auto-style7"> James Fisher</td>
-<td style="width:220px; height: 23px;" class="auto-style7"> Sales Rep</td>
-<td style="width:220px; height: 23px;" class="auto-style7"> Mayo</td>
-<td style="width:220px; height: 23px;" class="auto-style7"> €2500.50</td>
-</tr>
-
-<tr>
-
-<td style="width:219px; height: 23px;" class="auto-style7"> Lynda Kennedy</td>
-<td style="width:220px; height: 23px;" class="auto-style7"> Sales Rep</td>
-<td style="width:220px; height: 23px;" class="auto-style7"> Dublin</td>
-<td style="width:220px; height: 23px;" class="auto-style7"> €2000.00</td>
-</tr>
+<?php
+echo '</p>';
+}
+?>
 
 </table>
 
