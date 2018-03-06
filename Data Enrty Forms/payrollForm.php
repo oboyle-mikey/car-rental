@@ -36,7 +36,7 @@
     while($row = mysqli_fetch_assoc($result)) {
         ?>
 
-					<option value="<?php echo $row['employee_ID'];?>"> <?php echo $row['name'];?> 
+					<option value="<?php echo $row['employee_ID'];?>"> <?php echo $row['employee_ID']. "  " .$row['name'];?> 
 					</option>
  
 <?php
