@@ -27,6 +27,8 @@
 
 <h2>Remove Employee</h2>
 
+<form method="post" style="height: 379px" action="employeesPost.php">
+
 <table style="width: 50%; height: 79px">
 	<tr>
 		<td style="width: 130px">Enter employee name:</td>
@@ -45,19 +47,7 @@
 
 </table>
 
-	<input name="Button1" type="submit" value="Delete" />
-	
-	<?php 
-			
-			$sql = "DELETE FROM employees WHERE name = deletename";
-
-			if ($db->query($sql) === TRUE) {
-    			echo "Record deleted successfully";
-			} else {
-    			echo "Error deleting record: " . $db->error;
-			}
-			
-	?>
+<input name="Button1" type="submit" value="Delete" />
 	
 </form>
 
