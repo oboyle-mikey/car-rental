@@ -52,9 +52,7 @@
 
 // creates the edit record form
 
-function renderForm($id, $name, $position, $grade, $base_salary, $commission)
-
-{
+function renderForm($id, $name, $position, $grade, $base_salary, $commission){
 
 ?>
 
@@ -145,17 +143,17 @@ renderForm($id, $name, $position, $grade, $base_salary, $commission);
 
 // get form data, making sure it is valid
 
-$id = $_POST['id'];
+// $id = $_POST['id'];
 
-$name = mysqli_real_escape_string(htmlspecialchars($_POST['name']));
+// $name = mysqli_real_escape_string(htmlspecialchars($_POST['name']));
 
-$position = mysqli_real_escape_string(htmlspecialchars($_POST['position']));
+// $position = mysqli_real_escape_string(htmlspecialchars($_POST['position']));
 
-$grade= mysqli_real_escape_string(htmlspecialchars($_POST['grade']));
+// $grade= mysqli_real_escape_string(htmlspecialchars($_POST['grade']));
 
-$base_salary = mysqli_real_escape_string(htmlspecialchars($_POST['base_salary']));
+// $base_salary = mysqli_real_escape_string(htmlspecialchars($_POST['base_salary']));
 
-$commission = mysqli_real_escape_string(htmlspecialchars($_POST['commission']));
+// $commission = mysqli_real_escape_string(htmlspecialchars($_POST['commission']));
 
 
 // check that firstname/lastname fields are both filled in
@@ -168,11 +166,6 @@ if ($name == '' || $position == '' || $grade == '' || $base_salary == '' || $com
 
 echo "ERROR: Please fill in all required fields!";
 
-
-
-//display form
-
-renderForm($id, $name, $position, $grade, $base_salary, $commission);
 
 }
 

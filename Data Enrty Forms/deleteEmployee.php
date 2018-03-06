@@ -37,7 +37,7 @@
 			
 			<?php while($row1 = mysqli_fetch_array($result1)){?>
 			
-			<option value="<?php echo $row1['name']; ?>"> <?php  echo $row1['employee_ID'], ". ", $row1['name']; ?></option>
+				<option value="<?php echo $row1['name']; ?>"> <?php  echo $row1['employee_ID'], ". ", $row1['name']; ?></option>
 		
 			<?php }?>
 			
