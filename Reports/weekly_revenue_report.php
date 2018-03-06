@@ -80,7 +80,7 @@ $startDate = Startdate;
 $endDate = Enddate;
 
 
-$query = "Select fleet.car_registration, fleet.fleet_ID, reservations.fleet_ID, reservations.start_date, reservations.end_date, reservations.daysRented from reservations, fleet Where $startDate <= reservations.start_date AND $endDate >= reservations.end_date";
+$query = "Select fleet.car_registration, fleet.fleet_ID, reservations.fleet_ID, reservations.start_date, reservations.end_date, reservations.daysRented from reservations, fleet WHERE reservations.end_date > '$endDate' AND reservations.start_date < '$startDate";
 //Select fleet.car_registration, fleet.fleet_ID, reservations.fleet_ID, reservations.start_date, reservations.end_date, reservations.daysRented from reservations, fleet Where 01/01/2018 <= reservations.start_date AND 10/10/2018>= reservations.end_date
 $result = $db->query($query);
 

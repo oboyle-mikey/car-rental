@@ -58,7 +58,6 @@ li a:hover {
 <p class="auto-style1">Payroll by Office</p>
 
 
-<form method="post">
 
 <td style="width: 125px">Branch</td>
 			<td style="width: 129px"><select name="office" style="width: 139px">
@@ -67,14 +66,14 @@ li a:hover {
 			</select></td>
 
 
-</form>
-
 
 <?php
 
+include ("detail.php"); 
+
 $office = "";
 
-$office = $_POST['office'];
+$office = office;
 
 $query = "select employees.name, offices.address, employees.employee_ID, offices.office_ID, employees.commission, employees.hoursWorked , payroll.pay FROM payroll, employees, offices WHERE $office = offices.address";
 $result = $db->query($query);
