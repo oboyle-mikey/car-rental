@@ -35,6 +35,7 @@ if(empty($_POST['end_date'])){
 	$start_mileage = 0;
 	$end_mileage=0;
 	$employee = $_SESSION["employee_no"];
+	$price = 0;
 
 /*
 For start and end mileage maybe save it initially as 0, then update it from the check-out and check-in page
@@ -65,9 +66,9 @@ $rate_ID = mysqli_fetch_assoc($result);
 if($_SESSION['form_validation_err'] == 0 && $fleet_ID != -1){
 
 	$q  = "INSERT INTO reservations (";
-	$q .= "fleet_ID, client_ID, employee_ID, office_ID, start_date, end_date, start_mileage, end_mileage, rate_ID";
+	$q .= "fleet_ID, client_ID, employee_ID, office_ID, start_date, end_date, start_mileage, end_mileage, rate_ID, price";
 	$q .= ") VALUES (";
-	$q .= "'$fleet_ID','$client_ID','$employee', '$office_ID', '$start_date', '$end_date', '$start_mileage', '$end_mileage', '$rate_ID')";
+	$q .= "'$fleet_ID','$client_ID','$employee', '$office_ID', '$start_date', '$end_date', '$start_mileage', '$end_mileage', '$rate_ID', '$price')";
 
 	$result = $db->query($q);
 
