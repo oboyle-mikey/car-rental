@@ -27,10 +27,26 @@
 <table style="width: 28%; height: 322px">
 	<tr>
 		<td style="width: 130px">Client Name</td>
-		<td style="width: 253px">
-			<input type="Date" name="name" required/></td>
-	</tr>
+		<td class="auto-style15" style="width: 261px">
+		<select name="name" style="width: 150px">
+			<?php 
+				include("detail.php");
+    			$sql = "SELECT * FROM clients";
+    			$result = $db->query($sql);
+    
+    			while($row = mysqli_fetch_assoc($result)) {
+       		?>
 
+				<option value="<?php echo $row['client_ID'];?>"> <?php echo $row['name'];?>  </option>
+
+			<?php
+			}
+			?>
+					
+		</select>
+		</td>
+
+	</tr>
 	<tr>
 		<td style="width: 130px">Start Date</td>
 		<td style="width: 253px">
@@ -43,16 +59,25 @@
 	</tr>
 	<tr>
 		<td style="width: 130px">Car Group Name</td>
-		<td style="width: 253px">
-			<input name="car_group_name" type="text" required/>
+		<td class="auto-style15" style="width: 261px">
+		<select name="car_group_name" style="width: 150px">
+			<?php 
+				include("detail.php");
+    			$sql = "SELECT * FROM rates";
+    			$result = $db->query($sql);
+    
+    			while($row = mysqli_fetch_assoc($result)) {
+       		?>
+
+				<option value="<?php echo $row['rate_ID'];?>"> <?php echo $row['rate_ID'];?>  </option>
+
+			<?php
+			}
+			?>
+					
+		</select>
 		</td>
-	</tr>
-	<tr>
-		<td style="width: 130px">Location ID</td>
-		<td style="width: 253px">
-			<input name="office_ID" type="text" required/>
-		</td>
-	</tr>
+
 	<tr>
 		<td style="width: 130px">Card Details</td>
 		<td style="width: 253px">
@@ -68,12 +93,12 @@
     			$sql = "SELECT * FROM offices";
     			$result = $db->query($sql);
     
-    		while($row = mysqli_fetch_assoc($result)) {
-       		 	?>
+    			while($row = mysqli_fetch_assoc($result)) {
+       		?>
 
 				<option value="<?php echo $row['office_ID'];?>"> <?php echo $row['address'];?>  </option>
 
-				<?php
+			<?php
 			}
 			?>
 					
