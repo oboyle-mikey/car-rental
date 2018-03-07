@@ -5,7 +5,6 @@ include ("detail.php");
 session_start();
 $_SESSION['form_validation_err'] = 0;
 
-
 if(empty($_POST['name'])){
 	$_SESSION['form_validation_err'] = 1;
 }else{
@@ -42,12 +41,14 @@ if(empty($_POST['bank_ac_no'])){
 	$bank_ac_no = test_input($_POST['bank_ac_no']);
 }
 
+
 function test_input($data){
 	$data = trim($data);
 	$data = stripslashes($data);
 	$data = htmlspecialchars($data);
 	return $data;
 }
+
 
 if($_SESSION['form_validation_err'] == 0){
 
@@ -57,6 +58,8 @@ if($_SESSION['form_validation_err'] == 0){
 	$q .= "'$name', '$email', '$address', '$county', '$phone_no', '$age', '$bank_ac_no')";
 
 	$result = $db->query($q);
+
+	echo($q);
 
 }else{
 	header('Location: Home.php');

@@ -5,6 +5,24 @@ include ("detail.php");
 session_start();
 $_SESSION['form_validation_err'] = 0;
 
+// Delete Employee
+
+if(empty($_POST['deletename'])){
+	
+}else{
+	
+	$nameDelete = $_POST['deletename'];
+			
+	$sql = "DELETE FROM employees WHERE name = $nameDelete";
+
+	if ($db->query($sql) === TRUE) {
+    	echo "Record deleted successfully";
+	} else {
+    	echo "Error deleting record: " . $db->error;
+	}
+}
+
+//New Employee
 
 if(empty($_POST['office_ID'])){
 	$_SESSION['form_validation_err'] = 1;
@@ -53,8 +71,11 @@ if($_SESSION['form_validation_err'] == 0){
 
 	$result = $db->query($q);
 
+	echo($q);
+
 }else{
 	header('Location: Home.php');
 }
+
 
 ?>

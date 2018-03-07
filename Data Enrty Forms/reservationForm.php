@@ -48,31 +48,9 @@
 		</td>
 	</tr>
 	<tr>
-		<td style="width: 130px">Location ID</td>
+		<td style="width: 130px">Pickup Location</td>
 		<td style="width: 253px">
-		<select name="location" style="width: 150px">
-			
-			
-			<?php 
-	include("detail.php");
-    $sql = "SELECT * FROM offices";
-    $result = $db->query($sql);
-    
-    while($row = mysqli_fetch_assoc($result)) {
-        ?>
 
-					<option value="<?php echo $row['office_ID'];?>"> <?php echo $row['address'];?> 
-					</option>
- 
-<?php
-}
-?>
-					</select><td class="auto-style15" style="width: 261px">
-		&nbsp;</td>
-
-		</td>
-	</tr>
-		
 	</table>
 
 	<input name="Button1" type="submit" value="Submit" />

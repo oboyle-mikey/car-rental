@@ -8,53 +8,85 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-<title>Untitled 1</title>
-<style type="text/css">
-.auto-style1 {
-	text-align: left;
+<style>
+ul { 
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+.auto-style5 {
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 	font-size: x-large;
-	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-.auto-style3 {
+.auto-style6 {
 	text-align: left;
-}
-.auto-style4 {
-	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 .auto-style7 {
 	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
-.auto-style8 {
-	font-size: medium;
-}
-.auto-style9 {
-	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-	font-size: medium;
-}
 </style>
+<meta content="en-ie" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <link rel = "stylesheet" type = "text/css" href = "style.css">
+<title>Date</title>
 </head>
 
-
 <body>
+
 
 <?php include('navbar.php') ?>
 
 
 <p class="auto-style1">Payroll by Office</p>
 
-<form method="post">
-	<div class="auto-style3">
-		<span class="auto-style4">Enter office:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		</span>
-		<input name="office" type="text" class="auto-style4" value="Mayo" /></div>
 
-</form>
 
+<td style="width: 125px">Branch</td>
+			<td style="width: 129px"><select name="office" style="width: 139px">
+			<option>Stephens Green</option>
+			<option>Airport</option>
+			</select></td>
+
+
+
+<?php
+
+include ("detail.php"); 
+
+$office = "";
+
+$office = office;
+
+$query = "select employees.name, offices.address, employees.employee_ID, offices.office_ID, employees.commission, employees.hoursWorked , payroll.pay FROM payroll, employees, offices WHERE $office = offices.address";
+$result = $db->query($query);
+
+$num_results = mysqli_num_rows ($result);
+
+
+
+?>
 
 
 <table align="center">
+
 <tr>
 
 <th style="width:219px; height: 23px;" class="auto-style7"> Employee Name </th>
@@ -64,65 +96,31 @@
 
 </tr>
 
-<tr>
+<?php
 
-<td style="width:219px" class="auto-style7"> Harry Henry</td>
-<td style="width:220px" class="auto-style4">14</td>
-<td style="width:220px" class="auto-style9">
-<span style="color: rgb(34, 34, 34); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" class="auto-style8">
-€43</span><span class="auto-style8">00.00</span></td>
+for ($i=0; $i <$num_results; $i++)
+{
+$row = mysqli_fetch_assoc($result);
 
-<td style="width:220px" class="auto-style4">
-<span style="color: rgb(34, 34, 34); font-size: 13px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">
-€</span>23000.00</td>
 
-</tr>
+
+?>
 
 <tr>
 
-<td style="width:219px" class="auto-style7"> Freda Dawson</td>
-<td style="width:220px" class="auto-style4">28</td>
-<td style="width:220px" class="auto-style9">
-<span style="color: rgb(34, 34, 34); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" class="auto-style8">
-€1332</span><span class="auto-style8">0.00</span></td>
-
-<td style="width:220px" class="auto-style4">
-<span style="color: rgb(34, 34, 34); font-size: 13px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">
-€</span>46000.00</td>
+<td style="width:219px" class="auto-style7"> <?php echo ($row['name']); ?></td>
+<td style="width:220px" class="auto-style7"> <?php echo ($row['hoursWorks']); ?></td>
+<td style="width:220px" class="auto-style7"> <a href=<?php echo ($row['commission']); ?></td>
+<td style="width:220px" class="auto-style7"><?php echo ($row['pay']); ?></td>
 
 </tr>
 
-<tr>
-
-<td style="width:219px; height: 23px;" class="auto-style7"> Colin&nbsp; Goodie</td>
-<td style="width:220px" class="auto-style4">7</td>
-<td style="width:220px" class="auto-style9">
-<span style="color: rgb(34, 34, 34); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" class="auto-style8">
-€123</span><span class="auto-style8">00.00</span></td>
-
-<td style="width:220px" class="auto-style4">
-<span style="color: rgb(34, 34, 34); font-size: 13px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">
-€</span>90000.00</td>
-
-</tr>
-
-<tr>
-
-<td style="width:219px; height: 23px;" class="auto-style7"> James Fisher</td>
-<td style="width:220px" class="auto-style4">9</td>
-<td style="width:220px" class="auto-style9">
-<span style="color: rgb(34, 34, 34); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;" class="auto-style8">
-€</span><span class="auto-style8">3560.00</span></td>
-
-<td style="width:220px" class="auto-style4">
-<span style="color: rgb(34, 34, 34); font-size: 13px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">
-€</span>13000.00</td>
-
-</tr>
-
+<?php
+echo '</p>';
+}
+?>
 
 </table>
-
 
 
 </body>

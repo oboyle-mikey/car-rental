@@ -31,11 +31,6 @@ if(empty($_POST['description'])){
 }else{
 	$description = test_input($_POST['description']);
 }
-if(empty($_POST['cost'])){
-	$_SESSION['form_validation_err'] = 1;
-}else{
-	$cost = test_input($_POST['cost']);
-}
 if(empty($_POST['car_registration'])){
 	$_SESSION['form_validation_err'] = 1;
 }else{
@@ -58,11 +53,13 @@ function test_input($data){
 if($_SESSION['form_validation_err'] == 0){
 
 	$q  = "INSERT INTO fleet (";
-	$q .= "model, car_group_name, maintanance_interval, mileage, description, cost, car_registration, office_ID";
+	$q .= "model, car_group_name, maintanance_interval, mileage, description, car_registration, office_ID";
 	$q .= ") VALUES (";
-	$q .= "'$model', '$car_group_name', '$maintanance_interval', '$mileage', '$description', '$cost', '$car_registration', '$office_ID')";
+	$q .= "'$model', '$car_group_name', '$maintanance_interval', '$mileage', '$description', '$car_registration', '$office_ID')";
 
 	$result = $db->query($q);
+
+	echo($q);
 
 }else{
 	header('Location: Home.php');
