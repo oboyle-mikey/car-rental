@@ -25,10 +25,10 @@ if(empty($_POST['car_group_name'])){
 }else{
 	$car_group_name = test_input($_POST['car_group_name']);
 }
-if(empty($_POST['office_ID'])){
+if(empty($_POST['location'])){
 	$_SESSION['form_validation_err'] = 1;
 }else{
-	$office_ID = test_input($_POST['office_ID']);
+	$office_ID = test_input($_POST['location']);
 }
 if(empty($_POST['start_date'])){
 	$_SESSION['form_validation_err'] = 1;
@@ -71,7 +71,7 @@ if($_SESSION['form_validation_err'] == 0 && $fleet_ID != -1){
 	$q  = "INSERT INTO reservations (";
 	$q .= "fleet_ID, client_ID, employee_ID, office_ID, start_date, end_date, start_mileage, end_mileage, rate_ID, price";
 	$q .= ") VALUES (";
-	$q .= "'$fleet_ID','$client_ID','$employee', '$office_ID', '$start_date', '$end_date', '$start_mileage', '$end_mileage', '$rate_ID', '$price')";
+	$q .= "'$fleet_ID','$client_ID','$employee', '$location', '$start_date', '$end_date', '$start_mileage', '$end_mileage', '$rate_ID', '$price')";
 
 	$result = $db->query($q);
 

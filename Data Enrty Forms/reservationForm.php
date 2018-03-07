@@ -59,37 +59,28 @@
 			<input name="bank_ac_no" type="text" required/>
 		</td>
 	</tr>
-
-	<!-- <<<<<<< Sean-5/3/18
+	<tr>
+		<td style="width: 130px">Pickup Location</td>
+		<td class="auto-style15" style="width: 261px">
 		<select name="location" style="width: 150px">
-			
-			
 			<?php 
-	  include("detail.php");
-    $sql = "SELECT * FROM offices";
-    $result = $db->query($sql);
+				include("detail.php");
+    			$sql = "SELECT * FROM offices";
+    			$result = $db->query($sql);
     
-    while($row = mysqli_fetch_assoc($result)) {
-        ?>
+    		while($row = mysqli_fetch_assoc($result)) {
+       		 	?>
 
-					<option value="<?php echo $row['office_ID'];?>"> <?php echo $row['address'];?> 
-					</option>
- 
-<?php
-}
-?>
-					</select><td class="auto-style15" style="width: 261px">
-		&nbsp;</td>
+				<option value="<?php echo $row['office_ID'];?>"> <?php echo $row['address'];?>  </option>
 
+				<?php
+			}
+			?>
+					
+		</select>
 		</td>
+
 	</tr>
-		
-=======
-			<input name="office_ID" type="text" required/>
-		</td>
-	</tr>
-	
->>>>>>> master -->
 	
 	</table>
 

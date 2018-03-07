@@ -26,23 +26,22 @@
 		<td style="width: 130px">Employee ID</td>
 		<td class="auto-style15" style="width: 261px">
 		<select name="employee_ID" style="width: 150px">
-			
-			
 			<?php 
-	include("detail.php");
-    $sql = "SELECT * FROM employees ORDER BY name asc";
-    $result = $db->query($sql);
+				include("detail.php");
+    			$sql = "SELECT * FROM employees ORDER BY name asc";
+    			$result = $db->query($sql);
     
-    while($row = mysqli_fetch_assoc($result)) {
-        ?>
+    		while($row = mysqli_fetch_assoc($result)) {
+       		 	?>
 
-					<option value="<?php echo $row['employee_ID'];?>"> <?php echo $row['employee_ID']. "  " .$row['name'];?> 
-					</option>
- 
-<?php
-}
-?>
-					</select></td>
+				<option value="<?php echo $row['employee_ID'];?>"> <?php echo $row['employee_ID']. "  " .$row['name'];?> </option>
+
+				<?php
+			}
+			?>
+					
+		</select>
+		</td>
 
 	</tr>
 	</table>
