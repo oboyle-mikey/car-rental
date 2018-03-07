@@ -12,6 +12,14 @@ include ("detail.php");
 session_start();
 $_SESSION['form_validation_err'] = 0;
 
+
+
+if(empty($_POST['name'])){
+	$_SESSION['form_validation_err'] = 1;
+}else{
+	$name = test_input($_POST['name']);
+}
+
 if(empty($_POST['car_group_name'])){
 	$_SESSION['form_validation_err'] = 1;
 }else{
@@ -45,15 +53,6 @@ For start and end mileage maybe save it initially as 0, then update it from the 
 */
 
 //gets fleet ID	This select statement doesn't check availability
-	
-$sql = "SELECT fleet_ID, car_group_name FROM fleet WHERE fleet_ID NOT IN (";
-$sql .= "SELECT fleet_ID FROM reservations WHERE end_date > '$start_date' AND start_date < '$end_date' ) AND car_group_name = '$car_group_name' LIMIT 1";
-$result = $db->query($sql);
-$num_results = mysqli_num_rows($result);
-echo($sql);
-echo($num_results);
-echo('test');
-
 
 if($num_results == 1){
 	$resultQ = mysqli_fetch_assoc($result);
