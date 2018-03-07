@@ -28,7 +28,7 @@
 	<tr>
 		<td style="width: 130px">Client Name</td>
 		<td style="width: 253px">
-			<input type="text" name="name" required/></td>
+			<input type="Date" name="name" required/></td>
 	</tr>
 
 	<tr>
@@ -48,9 +48,49 @@
 		</td>
 	</tr>
 	<tr>
-		<td style="width: 130px">Pickup Location</td>
+		<td style="width: 130px">Location ID</td>
 		<td style="width: 253px">
+			<input name="office_ID" type="text" required/>
+		</td>
+	</tr>
+	<tr>
+		<td style="width: 130px">Card Details</td>
+		<td style="width: 253px">
+			<input name="bank_ac_no" type="text" required/>
+		</td>
+	</tr>
 
+	<!-- <<<<<<< Sean-5/3/18
+		<select name="location" style="width: 150px">
+			
+			
+			<?php 
+	  include("detail.php");
+    $sql = "SELECT * FROM offices";
+    $result = $db->query($sql);
+    
+    while($row = mysqli_fetch_assoc($result)) {
+        ?>
+
+					<option value="<?php echo $row['office_ID'];?>"> <?php echo $row['address'];?> 
+					</option>
+ 
+<?php
+}
+?>
+					</select><td class="auto-style15" style="width: 261px">
+		&nbsp;</td>
+
+		</td>
+	</tr>
+		
+=======
+			<input name="office_ID" type="text" required/>
+		</td>
+	</tr>
+	
+>>>>>>> master -->
+	
 	</table>
 
 	<input name="Button1" type="submit" value="Submit" />
