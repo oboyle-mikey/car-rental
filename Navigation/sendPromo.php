@@ -19,27 +19,26 @@
 <?php include('navbar.php') ?>
 
 
-<h2>Promotional Message</h2>
-
-
-<form method="post" style="height: 379px" action="employeesPost.php">
+<h2>Targeted Messages</h2>
 
 
 <table style="width: 28%; height: 322px">
-<tr>
-<td style="width: 130px">Message</td>
-<td style="width: 253px">
-    &nbsp;<form method="post">
-        <textarea cols="20" name="Description" rows="6" required></textarea></form></td>
-</tr>
-	
+	<tr>
+        <td>
+		    <a href = "messageTopClients.php">Message Top Clients</a>
+        </td>
+	</tr>
+    <tr>
+        <td>
+        <a href = "messageExpiredClients.php">Message Expiring Clients</a>
+        </td>
+	</tr>
+    <tr>
+        <td>
+            <a href = "messageByCounty.php">Message By Region</a>
+        </td>
+	</tr>
 	</table>
-
-	<input name="Button1" type="submit" value="Submit" />
-	<input name="Button2" type="reset" value="Reset" />
-	
-	
-</form>
 
 	
 	
