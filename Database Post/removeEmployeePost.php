@@ -1,8 +1,12 @@
 <?php 
 
-	include("detail.php");
+    include("detail.php");
+    
+    $employee = $_POST['deletename'];
 			
-	$sql = "DELETE FROM employees WHERE name = '$_POST[deletename]'";
+    $sql = "DELETE FROM employees WHERE employee_ID = $employee";
+    
+    echo($sql);
 
 	if ($db->query($sql) === TRUE) {
     	echo "Record deleted successfully";
