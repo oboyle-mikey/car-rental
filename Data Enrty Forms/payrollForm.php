@@ -1,7 +1,8 @@
 <?php
 
 	session_start();
-   
+   #<form method="post" style="height: 379px" action="payrollPost.php">
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -13,28 +14,84 @@
 <title>Executive Cars Ltd</title>
 <link rel = "stylesheet" type = "text/css" href = "style.css">
 </head>
-
+<body>
 <?php include('navbar.php') ?>
 
-<form method="post" style="height: 379px" action="payrollPost.php">
-
 <h2>Add Payroll</h2>
+<form action ="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" id="regForm">
 
 
-<table style="width: 28%; height: 322px">
+
+<table style="width: 28%; height: 101px">
 	<tr>
 		<td style="width: 130px">Employee ID</td>
-		<td style="width: 253px">
-			<input name="employee_ID" type="text" required/></td>
+		<td class="auto-style15" style="width: 261px">
+		<select name="employee_ID" style="width: 150px">
+			
+			
+			<?php 
+	include("detail.php");
+    $sql = "SELECT * FROM employees ORDER BY name asc";
+    $result = $db->query($sql);
+    
+    while($row = mysqli_fetch_assoc($result)) {
+        ?>
+
+					<option value="<?php echo $row['employee_ID'];?>"> <?php echo $row['employee_ID']. "  " .$row['name'];?> 
+					</option>
+ 
+<?php
+}
+?>
+					</select><input name="getpay" type="submit" value="Calculate Pay" style="width: 94px" /></td>
+					
+			
+	
 	</tr>
 	</table>
 
-	<input name="Button1" type="submit" value="Submit" />
-	<input name="Button2" type="reset" value="Reset" />
+	&nbsp;</form>
 	
+	<?php	include("detail.php");
+		if (isset($_POST['getpay']))
+		{
+			$employee_ID=$_POST['employee_ID'];
+			
+		
+			
+				
+					//calculates sales for the past month
+			$sql = "SELECT SUM(price) as sales from reservations where employee_ID = '".$employee_ID."' and start_date between DATE_SUB(CURDATE(), interval 30 day) AND CURDATE()";
+					$result = $db->query($sql);
+					$sales = mysqli_fetch_assoc($result);
+					$sales = $sales['sales'];
+				
+		
+			// gets commission
+			$sql = "SELECT commission from employees WHERE employee_ID = '".$employee_ID."'";
+					$result = $db->query($sql);
+					$commission_rate = mysqli_fetch_assoc($result);
+					$commission_rate = $commission_rate['commission'];
+					$commission = ($commission_rate/100)*$sales;
+						
+			$sql = "SELECT base_salery from employees WHERE employee_ID = '".$employee_ID."'";
+					$result = $db->query($sql);
+					$salary = mysqli_fetch_assoc($result);
+					$salary = $salary['base_salery'];
+					$pay = $commission + $salary/12;
+		}
+			?>
 	
-</form>
-
+			<form method="post" style="height: 379px" action="payrollPost.php">
+		
+		
+			<tr style="width: 130px">Monthly Salary
+			<input name="Text1" type="text" value="<?php echo $pay;  ?>"/>
+			</tr>
+			<input name="Submit1" type="submit" value="submit" />
+		
+			</form>
+		
 
 </body>
 
