@@ -57,6 +57,7 @@ li a:hover {
 
 <p class="auto-style1">Payroll by Office</p>
 
+<form method="post" action="payroll_by_branch.php">
 
 
 <td style="width: 125px">Branch</td>
@@ -65,8 +66,9 @@ li a:hover {
 			<option>Airport</option>
 			</select></td>
 
+<input name="Submit" type="submit" value="Submit" /><input name="Reset" type="button" value="Reset" /></td>
 
-
+</form>
 
 <?php
 
