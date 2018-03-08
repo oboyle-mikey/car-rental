@@ -33,11 +33,11 @@
         <a href = "messageExpiredClients.php">Message Expiring Clients</a>
         </td>
 	</tr>
-    <tr>
+    <!-- <tr>
         <td>
             <a href = "messageByCounty.php">Message By Region</a>
         </td>
-	</tr>
+	</tr> -->
 	</table>
 
 	

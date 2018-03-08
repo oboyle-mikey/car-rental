@@ -2,7 +2,7 @@
 
     session_start();
     include('detail.php');
-    $query = "SELECT email FROM clients WHERE last_booking < DATE_SUB(curdate(), interval 2 year) ";
+    $query = "SELECT email FROM clients WHERE last_booking < DATE_SUB(curdate(), interval 6 month) ";
     $result = $db->query($query);
    
 ?>
