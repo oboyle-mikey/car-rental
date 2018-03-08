@@ -27,7 +27,7 @@ function test_input($data){
 //$_SESSION['access'] is the value being posted for employee ID
 if($_SESSION['form_validation_err'] == 0){
 	//if it works then it would be similar code for updating the price and start/end mileage
-	$t = "UPDATE reservations set start_mileage = '".$start_mileage."' WHERE reservation_ID = '".$reservation_ID."'";
+	$t = "UPDATE reservations set start_mileage = $start_mileage WHERE reservation_ID = $reservation_ID";
 	$result = $db->query($t);
 
 }else{

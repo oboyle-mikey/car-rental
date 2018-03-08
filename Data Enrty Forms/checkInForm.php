@@ -24,11 +24,28 @@
 
 
 <table style="width: 28%; height: 322px">
-	<tr>
-		<td style="width: 130px">Reservation ID</td>
-		<td style="width: 253px">
-			<input name="reservation_ID" type="text"  required/></td>
-	</tr>
+<tr>
+<td style="width: 130px">Reservation ID</td>
+<td class="auto-style15" style="width: 261px">
+<select name="reservation_ID" style="width: 150px">
+	<?php 
+		include("detail.php");
+		$sql = "SELECT reservation_ID, name FROM reservations, clients WHERE end_mileage = 0 AND reservations.client_ID = clients.client_ID";
+		$result = $db->query($sql);
+
+		while($row = mysqli_fetch_assoc($result)) {
+	   ?>
+
+		<option value="<?php echo $row['reservation_ID'];?>"> <?php echo $row['name'];?>  </option>
+
+	<?php
+	}
+	?>
+			
+</select>
+</td>
+
+</tr>
 	<tr>
 		<td style="width: 130px">End Mileage</td>
 		<td style="width: 253px">

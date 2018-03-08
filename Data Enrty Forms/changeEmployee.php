@@ -21,7 +21,7 @@
 
 <body>
 
-<form method="post" style="height: 379px" action="employeesPost.php">
+<form method="post" style="height: 148px" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" >
 
 <h2>Change Employee Data</h2>
 
@@ -40,41 +40,49 @@
 		</td>
 	</tr>
 
-</table>	
+</table>
+
+<input name="submit" type="submit" value="Submit" />	
 	
 </form>
 
-</body>
-
-</html>
-
 <?php
 
-// creates the edit record form
+// query db for the chosesn employee
 
-function renderForm($id, $name, $position, $grade, $base_salary, $commission){
+include("detail.php");
+$sql = "SELECT * from employees WHERE name = changename";
+$result = $db->query($sql);
+$row = mysqli_fetch_array($result);
+
+// get data from db
+
+$id = $row['employee_ID']
+
+$name = $row['name'];
+
+$position = $row['position'];
+
+$grade= $row['grade'];
+
+$base_salary = $row['base_salary'];
+
+$commission= $row['commission'];
+
 
 ?>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 
-<html>
-
-<head>
-
-<title>Update Records</title>
-
-</head>
-
-<body>
-
-<form method="post" style="height: 379px" action="employeesPost.php">
-
-<input type="hidden" name="id" value="<?php echo $id; ?>"/>
+<form method="post" style="height: 379px" action="updateEmployeePost.php">
 
 <div>
 
 <table style="width: 28%; height: 322px">
+	<tr>
+		<td style="width: 130px">Employee ID</td>
+		<td style="width: 253px">
+			<input type="text" name="name" value="<?php echo $id; ?>" required/></td>
+	</tr>
 	<tr>
 		<td style="width: 130px">Name</td>
 		<td style="width: 253px">
@@ -102,9 +110,9 @@ function renderForm($id, $name, $position, $grade, $base_salary, $commission){
 			<input type="text" name="commission" value="<?php echo $commission; ?>" required/></td>
 	</tr>
 	
-	</table>
+</table>
 
-	<input name="submit" type="submit" value="Submit" />
+<input name="edit" type="submit" value="Edit" />
 
 </div>
 
@@ -114,70 +122,4 @@ function renderForm($id, $name, $position, $grade, $base_salary, $commission){
 
 </html>
 
-<?php
 
-}
-
-// query db for the chosesn employee
-
-include("detail.php");
-$sql = "SELECT * from employees WHERE name = changename";
-$result = $db->query($sql);
-$row = mysqli_fetch_array($result);
-
-// get data from db
-
-$name = $row['name'];
-
-$position = $row['position'];
-
-$grade= $row['grade'];
-
-$base_salary = $row['base_salary'];
-
-$commission= $row['commission'];
-
-//display form to update records
-
-renderForm($id, $name, $position, $grade, $base_salary, $commission);
-
-// get form data, making sure it is valid
-
-// $id = $_POST['id'];
-
-// $name = mysqli_real_escape_string(htmlspecialchars($_POST['name']));
-
-// $position = mysqli_real_escape_string(htmlspecialchars($_POST['position']));
-
-// $grade= mysqli_real_escape_string(htmlspecialchars($_POST['grade']));
-
-// $base_salary = mysqli_real_escape_string(htmlspecialchars($_POST['base_salary']));
-
-// $commission = mysqli_real_escape_string(htmlspecialchars($_POST['commission']));
-
-
-// check that firstname/lastname fields are both filled in
-
-if ($name == '' || $position == '' || $grade == '' || $base_salary == '' || $commission == '')
-
-{
-
-// generate error message
-
-echo "ERROR: Please fill in all required fields!";
-
-
-}
-
-else
-
-{
-
-// save the data to the database
-
-query("UPDATE employees SET name ='$name', position = '$position', grade = '$grade', base_salary = '$base_salary', commission = '$commission' WHERE employee_ID='$id'");
-
-}
-
-
-?>
