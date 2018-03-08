@@ -24,6 +24,47 @@ function test_input($data){
 	return $data;
 }
 
+//Calculate number of days rented
+
+
+//Update days rented
+if($_SESSION['form_validation_err'] == 0){
+	//if it works then it would be similar code for updating the price and start/end mileage
+	$t = "UPDATE reservations set daysRented = $daysRented WHERE reservation_ID = $reservation_ID";
+	$result = $db->query($t);
+	echo $t;
+
+//Calculate miles driven
+if($_SESSION['form_validation_err'] == 0){
+	//if it works then it would be similar code for updating the price and start/end mileage
+	$t = "SELECT start_mileage FROM reservations WHERE reservation_ID = $reservation_ID";
+	$result = $db->query($t);
+	$row = mysqli_fetch_assoc($result);
+	$start_mileage = $row['start_mileage'];
+	$miles = $end_mileage - $start_mileage;
+	echo $t;
+
+//Final price Calculated
+
+//Final price updated
+
+//Update time returned
+
+//Valet car
+
+//Update Maintanance Window
+if($_SESSION['form_validation_err'] == 0){
+	//if it works then it would be similar code for updating the price and start/end mileage
+	$t = "UPDATE reservations set miles_since_maintanance = miles_since_maintanance + $miles WHERE reservation_ID = $reservation_ID";
+	$result = $db->query($t);
+	echo $t;
+
+//Check Maintanance Window
+
+//Update employee & office sales
+
+
+
 //$_SESSION['access'] is the value being posted for employee ID
 if($_SESSION['form_validation_err'] == 0){
 	//if it works then it would be similar code for updating the price and start/end mileage
