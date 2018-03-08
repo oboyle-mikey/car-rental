@@ -67,20 +67,27 @@ li a:hover {
 
 
 
+
 <?php
 
 include ("detail.php"); 
 
 $office = "";
 
-$office = office;
 
-$query = "select employees.name, offices.address, employees.employee_ID, offices.office_ID, employees.commission, employees.hoursWorked , payroll.pay FROM payroll, employees, offices WHERE $office = offices.address";
+$office = 'Stephens Green';
+
+
+
+$idquerry = "select office_ID FROM offices WHERE '$office' = address";
+$ID = $db->query($idquerry);
+$IDrow = mysqli_fetch_assoc($ID);
+$IDnum = $IDrow['office_ID'];
+
+
+$query = "select employees.name, employees.hoursWorked, employees.commission, employees.totalSales FROM employees WHERE '$IDnum' = employees.office_ID";
 $result = $db->query($query);
-
 $num_results = mysqli_num_rows ($result);
-
-
 
 ?>
 
@@ -102,16 +109,14 @@ for ($i=0; $i <$num_results; $i++)
 {
 $row = mysqli_fetch_assoc($result);
 
-
-
 ?>
 
 <tr>
 
 <td style="width:219px" class="auto-style7"> <?php echo ($row['name']); ?></td>
-<td style="width:220px" class="auto-style7"> <?php echo ($row['hoursWorks']); ?></td>
-<td style="width:220px" class="auto-style7"> <a href=<?php echo ($row['commission']); ?></td>
-<td style="width:220px" class="auto-style7"><?php echo ($row['pay']); ?></td>
+<td style="width:220px" class="auto-style7"> <?php echo ($row['hoursWorked']); ?></td>
+<td style="width:220px" class="auto-style7"> <?php echo ($row['commission']); ?></td>
+<td style="width:220px" class="auto-style7"> <?php echo ($row['totalSales']); ?></td>
 
 </tr>
 

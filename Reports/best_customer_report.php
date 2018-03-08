@@ -94,7 +94,7 @@ $row = mysqli_fetch_assoc($result);
 
 <td style="width:219px" class="auto-style7"> <?php echo ($row['name']); ?></td>
 <td style="width:220px" class="auto-style7"> <?php echo ($row['county']); ?></td>
-<td style="width:220px" class="auto-style7"> <a href=<?php echo ($row['email']); ?></td>
+<td style="width:220px" class="auto-style7"> <?php echo ($row['email']); ?></td>
 <td style="width:220px" class="auto-style7"> <?php echo ($row['totalIncome']); ?></td>
 
 </tr>

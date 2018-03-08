@@ -75,7 +75,7 @@ $num_results = mysqli_num_rows ($result);
 
 <tr>
 
-<th style="width:219px" class="auto-style7"> Employee Name </th>
+<th style="width:219px" class="auto-style7"> Employees Name </th>
 <th style="width:220px" class="auto-style7"> Possition</th>
 <th style="width:220px" class="auto-style7"> Office</th>
 <th style="width:220px" class="auto-style7"> Total Sales </th>
@@ -94,7 +94,7 @@ $row = mysqli_fetch_assoc($result);
 
 <td style="width:219px" class="auto-style7"> <?php echo ($row['name']); ?></td>
 <td style="width:220px" class="auto-style7"> <?php echo ($row['position']); ?></td>
-<td style="width:220px" class="auto-style7"> <a href=<?php echo ($row['office']); ?></td>
+<td style="width:220px" class="auto-style7"> <?php echo ($row['address']); ?></td>
 <td style="width:220px" class="auto-style7"> <?php echo ($row['totalSales']); ?></td>
 
 </tr>

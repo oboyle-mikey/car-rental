@@ -81,10 +81,10 @@ $Startdate  =  $Enddate =  "";
 $startDate = Startdate;
 $endDate = Enddate;
 
-echo($startDate);
+echo($startDate); 
 
 
-$query = "select clients.name , fleet.car_registration, reservations.reservation_ID, reservations.price , reservations.start_date from reservations, fleet, clients Where $startDate <= reservations.start_date AND $endDate>= reservations.start_date";
+$query = "select clients.name , fleet.car_registration, reservations.reservation_ID, reservations.price , reservations.start_date from reservations, fleet, clients Where $startDate <= reservations.start_date AND $endDate >= reservations.start_date AND reservations.fleet_ID = fleet.fleet_ID AND reservations.client_ID = clients.client_ID";
 $result = $db->query($query);
 
 $num_results = mysqli_num_rows ($result);
