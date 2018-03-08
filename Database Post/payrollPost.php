@@ -21,9 +21,10 @@ $sql = "SELECT office_ID from employee WHERE employee_ID = '".$employee_ID."'";
 
 
 //calculates sales for the past month
-$sql = "SELECT SUM(price) from reservations where employee_ID = '".$employee_ID."' and (select * from reservations where start_date between DATE_SUB(CURDATE(), interval 30 day) AND CURDATE())"
+$sql = "SELECT SUM(price) from reservations where employee_ID = '".$employee_ID."' and start_date between DATE_SUB(CURDATE(), interval 30 day) AND CURDATE()";
 		$result = $db->query($sql);
 		$sales = mysqli_fetch_assoc($result);
+		
 
 // gets commission
 $sql = "SELECT commission from employee WHERE employee_ID = '".$employee_ID."'";
@@ -31,11 +32,13 @@ $sql = "SELECT commission from employee WHERE employee_ID = '".$employee_ID."'";
 		$commission_rate = mysqli_fetch_assoc($result);
 		$commission = ($commission_rate/100)*sales;
 		
-$sql = "SELECT salery from employee WHERE employee_ID = '".$employee_ID."'";
+$sql = "SELECT base_salery from employee WHERE employee_ID = '".$employee_ID."'";
 		$result = $db->query($sql);
 		$salary = mysqli_fetch_assoc($result);
 		$pay = $commission + $salary/12;
 		
+		echo $commission;
+		echo $pay;
 		echo $salary;
 
 		
@@ -54,7 +57,7 @@ function test_input($data){
 }
 
 
-if($_SESSION['form_validation_err'] == 0){
+//if($_SESSION['form_validation_err'] == 0){
 
 	$q  = "INSERT INTO payroll (";
 	$q .= "employee_ID, office_ID, date, pay";
@@ -63,8 +66,8 @@ if($_SESSION['form_validation_err'] == 0){
 
 	$result = $db->query($q);
 
-}else{
-	header('Location: Home.php');
-}
+//}else{
+	//header('Location: Home.php');
+//}
 
 ?>
