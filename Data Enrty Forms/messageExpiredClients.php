@@ -2,7 +2,7 @@
 
     session_start();
     include('detail.php');
-    $query = "SELECT email FROM clients Order By totalIncome LIMIT 5";
+    $query = "SELECT email FROM clients WHERE last_booking < DATE_SUB(curdate(), interval 2 year) ";
     $result = $db->query($query);
    
 ?>
