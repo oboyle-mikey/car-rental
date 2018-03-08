@@ -20,11 +20,30 @@ $sql = "SELECT office_ID from employee WHERE employee_ID = '".$employee_ID."'";
 		$office_ID = $office_ID['office_ID'];
 
 
-//calculates pay
-$sql = "SUM(price) from reservations where employee_ID = '".$employee_ID."' AND start_date between DATE_ADD(LAST_DAY(DATE_SUB(CURDATE(), interval 30 day)), interval 1 day) AND CURDATE())";
+//calculates sales for the past month
+$sql = "SELECT SUM(price) from reservations where employee_ID = '".$employee_ID."' and (select * from reservations where start_date between DATE_SUB(CURDATE(), interval 30 day) AND CURDATE())"
 		$result = $db->query($sql);
-		$office_ID = mysqli_fetch_assoc($result);
-		$office_ID = $office_ID['office_ID'];
+		$sales = mysqli_fetch_assoc($result);
+
+// gets commission
+$sql = "SELECT commission from employee WHERE employee_ID = '".$employee_ID."'";
+		$result = $db->query($sql);
+		$commission_rate = mysqli_fetch_assoc($result);
+		$commission = ($commission_rate/100)*sales;
+		
+$sql = "SELECT salery from employee WHERE employee_ID = '".$employee_ID."'";
+		$result = $db->query($sql);
+		$salary = mysqli_fetch_assoc($result);
+		$pay = $commission + $salary/12;
+		
+		echo $salary;
+
+		
+		
+		
+
+
+
 
 
 function test_input($data){
