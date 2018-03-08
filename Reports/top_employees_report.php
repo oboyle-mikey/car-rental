@@ -87,15 +87,15 @@ $num_results = mysqli_num_rows ($result);
 for ($i=0; $i <$num_results; $i++)
 {
 $row = mysqli_fetch_assoc($result);
-
+$totalRevenue = $totalRevenue + $row['totalSales'];
 ?>
 
 <tr>
 
-<td style="width:219px" class="auto-style7"> <?php echo ($row['name']); ?></td>
-<td style="width:220px" class="auto-style7"> <?php echo ($row['position']); ?></td>
-<td style="width:220px" class="auto-style7"> <?php echo ($row['address']); ?></td>
-<td style="width:220px" class="auto-style7"> <?php echo ($row['totalSales']); ?></td>
+<td style="width:219px" class="auto-style7" align = "center"> <?php echo ($row['name']); ?></td>
+<td style="width:220px" class="auto-style7" align = "center"> <?php echo ($row['position']); ?></td>
+<td style="width:220px" class="auto-style7" align = "center"> <?php echo ($row['address']); ?></td>
+<td style="width:220px" class="auto-style7" align = "center"> <?php echo ($row['totalSales']); ?></td>
 
 </tr>
 
@@ -105,6 +105,17 @@ echo '</p>';
 ?>
 
 </table>
+
+
+
+<?php
+
+if($num_results != 0)
+{
+	echo ("The total sales is ". $totalRevenue. " Euro");
+}
+
+?>
 
 </body>
 

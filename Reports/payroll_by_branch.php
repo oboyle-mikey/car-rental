@@ -59,10 +59,11 @@ li a:hover {
 
 <form method="post" action="payroll_by_branch.php">
 
-
+<p class="auto-style3" >Please select and office:-</p>
 <td style="width: 125px">Branch</td>
-			<td style="width: 129px"><select name="office" style="width: 139px">
-			<option>Stephens Green</option>
+			<td style="width: 150px"><select name="office" style="width: 160px">
+            <option></option>
+            <option>Stephens Green</option>
 			<option>Airport</option>
 			</select></td>
 
@@ -74,10 +75,13 @@ li a:hover {
 
 include ("detail.php"); 
 
+
+
 $office = "";
 
 
-$office = 'Stephens Green';
+$office = $_POST['office'];
+
 
 
 
@@ -110,15 +114,15 @@ $num_results = mysqli_num_rows ($result);
 for ($i=0; $i <$num_results; $i++)
 {
 $row = mysqli_fetch_assoc($result);
-
+$totalRevenue = $totalRevenue + $row['totalSales'];
 ?>
 
 <tr>
 
-<td style="width:219px" class="auto-style7"> <?php echo ($row['name']); ?></td>
-<td style="width:220px" class="auto-style7"> <?php echo ($row['hoursWorked']); ?></td>
-<td style="width:220px" class="auto-style7"> <?php echo ($row['commission']); ?></td>
-<td style="width:220px" class="auto-style7"> <?php echo ($row['totalSales']); ?></td>
+<td style="width:219px" class="auto-style7" align="center"> <?php echo ($row['name']); ?></td>
+<td style="width:220px" class="auto-style7" align="center"> <?php echo ($row['hoursWorked']); ?></td>
+<td style="width:220px" class="auto-style7" align="center"> <?php echo ($row['commission']); ?></td>
+<td style="width:220px" class="auto-style7" align="center"> <?php echo ($row['totalSales']); ?></td>
 
 </tr>
 
@@ -128,6 +132,15 @@ echo '</p>';
 ?>
 
 </table>
+
+<?php
+
+if($num_results != 0)
+{
+	echo ("The total sales for the " .$office. " branch is ". $totalRevenue. " Euro");
+}
+
+?>
 
 
 </body>
