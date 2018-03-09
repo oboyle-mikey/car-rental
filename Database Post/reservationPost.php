@@ -53,7 +53,7 @@ if(empty($_POST['end_date'])){
 $sql = "SELECT fleet_ID, car_group_name FROM fleet WHERE fleet_ID NOT IN (SELECT fleet_ID FROM reservations WHERE end_date > '$start_date' AND start_date < '$end_date' ) AND car_group_name = '$car_group_name' LIMIT 1";
 $resultQ = $db->query($sql);
 echo($sql);
-$num_results = mysqli_num_rows ($resultQ);
+$num_results = mysqli_num_rows($resultQ);
 $rows = mysqli_fetch_assoc($resultQ);
 $fleet_ID = $rows['fleet_ID'];
 $rate_ID = $rows['car_group_name'];
