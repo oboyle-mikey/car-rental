@@ -1,5 +1,3 @@
-TEST
-
 <?PHP
 
 include ("detail.php"); 
@@ -53,6 +51,13 @@ if($_SESSION['form_validation_err'] == 0){
 	$row = mysqli_fetch_assoc($result);
 	$start_mileage = $row['start_mileage'];
 	$miles = $end_mileage - $start_mileage;
+
+	//Get RATE ID
+	$t = "SELECT rate_ID FROM reservations WHERE reservation_ID = $reservation_ID";
+	$result = $db->query($t);
+	echo $t;
+	$row = mysqli_fetch_assoc($result);
+	$rate_ID = $row['rate_ID'];
 	
 
 	//Final price Calculated
@@ -101,12 +106,15 @@ if($_SESSION['form_validation_err'] == 0){
 	$t = "SELECT name, address, county FROM clients WHERE ";
 
 	//Generate Incvoice 
-	$_SESSION['client'] = 
-	$_SESSION['client'] = 
-	$_SESSION['client'] = 
-	$_SESSION['client'] = 
-	$_SESSION['client'] = 
-	$_SESSION['client'] = 
+	$_SESSION['client_name'] = 
+	$_SESSION['client_address'] = 
+	$_SESSION['client_county'] = 
+	$_SESSION['client_charge'] = $charge;
+	$_SESSION['client_rate_ID'] = $rate_ID;
+	$_SESSION['client_miles_traveled'] = $miles;
+	$_SESSION['client_days_rented'] = $days;
+	$_SESSION['client_miles_rate'] = $mile_rate;
+	$_SESSION['client_days_rate'] = $day_rate;
 	header('Location: invoice.php');
 
 
