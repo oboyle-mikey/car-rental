@@ -1,7 +1,11 @@
-<?PHP 
+<?php
 
-session_start();
+	session_start();
 
+	if($_SESSION['login'] != "T")
+	{
+		header("Location: login.php");
+	}
 
 
 include ("detail.php");
@@ -11,8 +15,9 @@ $password = $_POST['password'];
 
 
 $_SESSION['employeeID']= $employee_ID;
-$_SESSION['position']="";
-$_SESSION['failedLogin'] = "";
+$_SESSION['login'] = "";
+$_SESSION['access'] = "";
+$_SESSION['office_ID'] = "";
 
 
 
@@ -31,12 +36,12 @@ if($num_results==0)
 
 else
 {
-$sql = "select grade from employees where employee_ID = $employee_ID";
+$sql = "select grade, office_ID from employees where employee_ID = $employee_ID";
 $result = $db->query($sql);
 $num_results = mysqli_num_rows($result);
 $row = mysqli_fetch_assoc($result);
 $grade = $row['grade'];
-
+$office_ID = $row['office_ID'];
 
 if($grade == 2)
 {
@@ -48,6 +53,7 @@ $_SESSION['access'] = 0;
 }
 
 $_SESSION['login'] = "T";
+$_SESSION['office_ID'] = $office_ID;
 
 header("Location: loginHome.php");
 

@@ -47,9 +47,6 @@ $row = mysqli_fetch_assoc($result);
 echo "Welcome ".$row['name'];
 
 
-echo $_SESSION['position'];
-echo $_SESSION['login'];
-echo $_SESSION['access'];
 ?>
 
 </html>

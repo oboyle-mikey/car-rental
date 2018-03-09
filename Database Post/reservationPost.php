@@ -1,4 +1,10 @@
-<?PHP
+<?php 
+session_start();
+if($_SESSION['login'] != "T")
+{
+	header("Location: login.php");
+}
+
 
 function test_input($data){
 	$data = trim($data);

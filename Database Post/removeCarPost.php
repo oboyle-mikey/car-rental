@@ -1,5 +1,13 @@
 <?php 
-    include("detail.php");
+session_start();
+if($_SESSION['login'] != "T")
+{
+	header("Location: login.php");
+}
+
+
+include ("detail.php"); 
+session_start();
     
     $car= $_POST['car'];
 			
