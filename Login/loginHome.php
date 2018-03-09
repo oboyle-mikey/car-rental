@@ -22,20 +22,12 @@
 
 <body>
 
-		<div class = "topnav">
-				<a> Executive Cars Ltd</ab>
-				<a class="active" href = "loginHome.php">Home</a>
-				<a href = "login.php">Login</a>
-			</div>
-
-
-
 
 
 </body>
 
 
-
+<?php include('navbar.php') ?>
 
 	
 <?php 
@@ -57,7 +49,7 @@ echo "Welcome ".$row['name'];
 
 echo $_SESSION['position'];
 echo $_SESSION['login'];
-
+echo $_SESSION['access'];
 ?>
 
 </html>

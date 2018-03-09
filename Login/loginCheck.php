@@ -31,13 +31,24 @@ if($num_results==0)
 
 else
 {
-$sql = "select * from employees where employee_ID = $employee_ID";
+$sql = "select grade from employees where employee_ID = $employee_ID";
 $result = $db->query($sql);
 $num_results = mysqli_num_rows($result);
 $row = mysqli_fetch_assoc($result);
-$position = $row['position'];
-$_SESSION['position'] = $position;
+$grade = $row['grade'];
+
+
+if($grade == 2)
+{
+$_SESSION['access'] = 1;
+}
+else
+{
+$_SESSION['access'] = 0;
+}
+
 $_SESSION['login'] = "T";
+
 header("Location: loginHome.php");
 
 }
