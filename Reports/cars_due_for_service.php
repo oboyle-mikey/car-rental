@@ -57,38 +57,13 @@ li a:hover {
 
 <p class="auto-style1">The following cars are due for service</p>
 
-<form method="post" action="payroll_by_branch.php">
 
-<p class="auto-style3" >Please select and office:-</p>
-<td style="width: 125px">Branch</td>
-			<td style="width: 150px"><select name="office" style="width: 160px">
-            <option></option>
-            <option>Stephens Green</option>
-			<option>Airport</option>
-			</select></td>
-
-<input name="Submit" type="submit" value="Submit" /><input name="Reset" type="button" value="Reset" /></td>
-
-</form>
 
 <?php
 
 include ("detail.php"); 
 
 
-
-$office = "";
-
-
-$office = $_POST['office'];
-
-
-
-
-$idquerry = "select office_ID FROM offices WHERE '$office' = address";
-$ID = $db->query($idquerry);
-$IDrow = mysqli_fetch_assoc($ID);
-$IDnum = $IDrow['office_ID'];
 
 
 $query = "select employees.name, employees.hoursWorked, employees.commission, employees.totalSales FROM employees WHERE '$IDnum' = employees.office_ID";
