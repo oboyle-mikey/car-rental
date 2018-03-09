@@ -2,28 +2,31 @@
 	
 	include("detail.php");
 	
-	if ($name == '' || $position == '' || $grade == '' || $base_salary == '' || $commission == ''){
-	
-	echo "ERROR: Please fill in all required fields!";
-
-	}else{
-
-        $name =$_POST['name'];
-        $position =$_POST['position'];
-        $grade = $_POST['grade'];
-        $base_salary = $_POST['base_salary'];
-        $commission = $_POST['commission'];
-        $employee_ID = $_POST['employee_ID'];
+	echo $_POST['employee_ID'];
+	echo $_POST['name'];
+	echo $_POST['position'];
+	echo $_POST['grade'];
+	echo $_POST['base_salery'];
+	echo $_POST['commission'];
 
 	
-	$q = "UPDATE employees SET name = $name, position = $position , grade = $grade, base_salary = $base_salary, commission = $commission WHERE = employee_ID = $employee_ID ";
+	$id = $_POST['employee_ID'];
+	$name = $_POST['name'];
+	$position = $_POST['position'];
+	$grade= $_POST['grade'];
+	$base_salery = $_POST['base_salery'];
+	$commission = $_POST['commission'];
+ 
 	
-	if(query($q))
-	  header("refresh:1; url = index.php");
-	else
-	  echo "Not updated";
-	}
+	
+	$q = "UPDATE employees SET name = '$name' , position ='$position', grade = '$grade', base_salery = '$base_salery', commission = '$commission' WHERE employee_ID = '$id' ";
+	
+	echo $q
+	
+	query($q)
+	
 	
 	session_start();
    
 ?>
+

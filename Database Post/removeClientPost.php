@@ -1,9 +1,9 @@
 <?php 
     include("detail.php");
     
-    $employee = $_POST['deletename'];
+    $client = $_POST['name'];
 			
-    $sql = "DELETE FROM employees WHERE employee_ID = $employee";
+    $sql = "DELETE FROM clients WHERE client_ID = $client";
     
 	if ($db->query($sql) === TRUE) {
     	echo "Record deleted successfully";
@@ -14,4 +14,3 @@
 	session_start();
 			
 ?>
-	
