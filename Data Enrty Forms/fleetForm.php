@@ -67,11 +67,6 @@
 			<input name="description" type="text"  required/></td>
 	</tr>
 	<tr>
-		<td style="width: 130px">Cost</td>
-		<td style="width: 253px">
-			<input name="cost" type="text"  required/></td>
-	</tr>
-	<tr>
 		<td style="width: 130px">Car Registration</td>
 		<td style="width: 253px">
 			<input name="car_registration" type="text"  required/></td>

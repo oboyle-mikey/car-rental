@@ -14,13 +14,18 @@ if(empty($_POST['employee_ID'])){
 
 
 //get office ID from employee ID
+<<<<<<< HEAD
 $sql = "SELECT office_ID from employees WHERE employee_ID = '".$employee_ID."'";
+=======
+$sql = "SELECT office_ID from employee WHERE employee_ID = '".$employee_ID."'";
+>>>>>>> bd11825cd674b896811c47a222c319954f2564e9
 		$result = $db->query($sql);
 		$office_ID = mysqli_fetch_assoc($result);
 		$office_ID = $office_ID['office_ID'];
 
 
 //calculates sales for the past month
+<<<<<<< HEAD
 $sql = "SELECT SUM(price) as sales from reservations where employee_ID = '".$employee_ID."' and start_date between DATE_SUB(CURDATE(), interval 30 day) AND CURDATE()";
 		$result = $db->query($sql);
 		$sales = mysqli_fetch_assoc($result);
@@ -44,6 +49,27 @@ $sql = "SELECT base_salery from employees WHERE employee_ID = '".$employee_ID."'
 //sets date
 $date = date("Y/m/d");		
 
+=======
+$sql = "SELECT SUM(price) from reservations where employee_ID = '".$employee_ID."' and start_date between DATE_SUB(CURDATE(), interval 30 day) AND CURDATE()";
+		$result = $db->query($sql);
+		$sales = mysqli_fetch_assoc($result);
+		
+
+// gets commission
+$sql = "SELECT commission from employee WHERE employee_ID = '".$employee_ID."'";
+		$result = $db->query($sql);
+		$commission_rate = mysqli_fetch_assoc($result);
+		$commission = ($commission_rate/100)*sales;
+		
+$sql = "SELECT base_salery from employee WHERE employee_ID = '".$employee_ID."'";
+		$result = $db->query($sql);
+		$salary = mysqli_fetch_assoc($result);
+		$pay = $commission + $salary/12;
+		
+		echo $commission;
+		echo $pay;
+		echo $salary;
+>>>>>>> bd11825cd674b896811c47a222c319954f2564e9
 
 		
 		
@@ -71,7 +97,11 @@ function test_input($data){
 	$result = $db->query($q);
 
 //}else{
+<<<<<<< HEAD
 //	header('Location: Home.php');
+=======
+	//header('Location: Home.php');
+>>>>>>> bd11825cd674b896811c47a222c319954f2564e9
 //}
 
 ?>

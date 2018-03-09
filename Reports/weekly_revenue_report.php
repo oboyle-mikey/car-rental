@@ -7,106 +7,118 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-
 <head>
+<style>
+ul { 
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+.auto-style5 {
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+	font-size: x-large;
+}
+.auto-style6 {
+	text-align: left;
+}
+.auto-style7 {
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+</style>
 <meta content="en-ie" http-equiv="Content-Language" />
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-<title>Executive Cars Ltd</title>
 <link rel = "stylesheet" type = "text/css" href = "style.css">
+<title>Date</title>
 </head>
 
 <body>
 
 <?php include('navbar.php') ?>
 
+<p class="auto-style5" style="width: 222px; height: 29px">Reservations Report</p>
 
 
-</body>
-
-</html>
+<span class="auto-style7">
 
 
-<p class="auto-style1"><strong>Weekly Revenue By Car</strong></p>
 
-<form method="post">
-	<div class="auto-style3">
-		<span class="auto-style4">Enter reporting start date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		</span>
-		<input name="start_date" type="text" class="auto-style4" value="20/12/2017" /><br class="auto-style4" />
-	</div>
-	<div class="auto-style3">
-		<span class="auto-style4">Enter reporting start end:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		</span>
-		<input name="end_date" type="text" class="auto-style4" value="20/01/2018" /></div>
+<p class="auto-style1">Start Date</p>
 
-</form>
+<td style="width: 125px"></td>
+<input name="Startdate" type="date" />
 
 
+<p class="auto-style1">End Date</p>
+<input name="Enddate" type="date" />
 
 <table align="center">
+
+<?php
+include ("detail.php"); 
+
+$Startdate  =  $Enddate =  "";
+
+$startDate = Startdate;
+$endDate = Enddate;
+
+
+$query = "Select fleet.car_registration, fleet.fleet_ID, reservations.fleet_ID, reservations.start_date, reservations.end_date, reservations.daysRented from reservations, fleet WHERE reservations.end_date > '$endDate' AND reservations.start_date < '$startDate";
+//Select fleet.car_registration, fleet.fleet_ID, reservations.fleet_ID, reservations.start_date, reservations.end_date, reservations.daysRented from reservations, fleet Where 01/01/2018 <= reservations.start_date AND 10/10/2018>= reservations.end_date
+$result = $db->query($query);
+
+$num_results = mysqli_num_rows ($result);
+
+?>
+
 <tr>
 
-<th style="width:220px; height: 23px;" class="auto-style4"> Car Registration</th>
-<th style="width:220px; height: 23px;" class="auto-style4"> Number of Days Rented </th>
-<th style="width:220px; height: 23px;" class="auto-style4"> &nbsp;Revenue</th>
+
+<th style="width:220px" class="auto-style7"> Car Registration</th>
+<th style="width:220px" class="auto-style7">Number of Days Rented </th>
+<th style="width:220px" class="auto-style7"> Total Car Revenue </th>
+
+</tr>
+<?php
+
+for ($i=0; $i <$num_results; $i++)
+{
+$row = mysqli_fetch_assoc($result);
+
+?>
+
+<tr>
+
+<td style="width:219px" class="auto-style7"> <?php echo ($row['']); ?></td>
+<td style="width:220px" class="auto-style7"> <a href=<?php echo ($row['']); ?></td>
+<td style="width:220px" class="auto-style7"> €400.00</td>
 
 </tr>
 
-<tr>
-
-<td style="width:220px" class="auto-style4">171-D-36555</td>
-<td style="width:220px" class="auto-style4">14</td>
-<td style="width:220px" class="auto-style4">
-<span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 13px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">
-€</span>2300.00</td>
-
-</tr>
-
-<tr>
-
-<td style="width:220px" class="auto-style4">171-D-14483</td>
-<td style="width:220px" class="auto-style4">28</td>
-<td style="width:220px" class="auto-style4">
-<span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 13px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">
-€</span>4600.00</td>
-
-	</tr>
-
-<tr>
-
-<td style="width:220px" class="auto-style4">171-D-28534</td>
-<td style="width:220px" class="auto-style4">7</td>
-<td style="width:220px" class="auto-style4">
-<span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 13px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">
-€</span>900.00</td>
-
-</tr>
-
-<tr>
-
-<td style="width:220px" class="auto-style4">171-D-03943</td>
-<td style="width:220px" class="auto-style4">9</td>
-<td style="width:220px" class="auto-style4">
-<span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 13px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">
-€</span>1300.00</td>
-
-</tr>
-
-
-<tr>
-
-<td style="width:220px" class="auto-style4">&nbsp;</td>
-<td style="width:220px" class="auto-style5"><strong>Total Revenue</strong></td>
-<td style="width:220px" class="auto-style4">
-<span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 13px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">
-€</span>9100.00</td>
-
-</tr>
+<?php
+echo '</p>';
+}
+?>
 
 
 </table>
-
-
 
 </body>
 

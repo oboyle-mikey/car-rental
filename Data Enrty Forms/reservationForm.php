@@ -48,8 +48,9 @@
 		</td>
 	</tr>
 	<tr>
-		<td style="width: 130px">Location ID</td>
+		<td style="width: 130px">Pickup Location</td>
 		<td style="width: 253px">
+<<<<<<< HEAD
 		<select name="EventID" style="width: 150px">
 			
 			
@@ -73,6 +74,9 @@
 		</td>
 	</tr>
 		
+=======
+
+>>>>>>> bd11825cd674b896811c47a222c319954f2564e9
 	</table>
 
 	<input name="Button1" type="submit" value="Submit" />
