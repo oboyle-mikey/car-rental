@@ -57,30 +57,43 @@ li a:hover {
 
 <p class="auto-style1">Payroll by Office</p>
 
+<form method="post" action="payroll_by_branch.php">
 
-
+<p class="auto-style3" >Please select and office:-</p>
 <td style="width: 125px">Branch</td>
-			<td style="width: 129px"><select name="office" style="width: 139px">
-			<option>Stephens Green</option>
+			<td style="width: 150px"><select name="office" style="width: 160px">
+            <option></option>
+            <option>Stephens Green</option>
 			<option>Airport</option>
 			</select></td>
 
+<input name="Submit" type="submit" value="Submit" /><input name="Reset" type="button" value="Reset" /></td>
 
+</form>
 
 <?php
 
 include ("detail.php"); 
 
+
+
 $office = "";
 
-$office = office;
 
-$query = "select employees.name, offices.address, employees.employee_ID, offices.office_ID, employees.commission, employees.hoursWorked , payroll.pay FROM payroll, employees, offices WHERE $office = offices.address";
+$office = $_POST['office'];
+
+
+
+
+$idquerry = "select office_ID FROM offices WHERE '$office' = address";
+$ID = $db->query($idquerry);
+$IDrow = mysqli_fetch_assoc($ID);
+$IDnum = $IDrow['office_ID'];
+
+
+$query = "select employees.name, employees.hoursWorked, employees.commission, employees.totalSales FROM employees WHERE '$IDnum' = employees.office_ID";
 $result = $db->query($query);
-
 $num_results = mysqli_num_rows ($result);
-
-
 
 ?>
 
@@ -101,17 +114,15 @@ $num_results = mysqli_num_rows ($result);
 for ($i=0; $i <$num_results; $i++)
 {
 $row = mysqli_fetch_assoc($result);
-
-
-
+$totalRevenue = $totalRevenue + $row['totalSales'];
 ?>
 
 <tr>
 
-<td style="width:219px" class="auto-style7"> <?php echo ($row['name']); ?></td>
-<td style="width:220px" class="auto-style7"> <?php echo ($row['hoursWorks']); ?></td>
-<td style="width:220px" class="auto-style7"> <a href=<?php echo ($row['commission']); ?></td>
-<td style="width:220px" class="auto-style7"><?php echo ($row['pay']); ?></td>
+<td style="width:219px" class="auto-style7" align="center"> <?php echo ($row['name']); ?></td>
+<td style="width:220px" class="auto-style7" align="center"> <?php echo ($row['hoursWorked']); ?></td>
+<td style="width:220px" class="auto-style7" align="center"> <?php echo ($row['commission']); ?></td>
+<td style="width:220px" class="auto-style7" align="center"> <?php echo ($row['totalSales']); ?></td>
 
 </tr>
 
@@ -121,6 +132,15 @@ echo '</p>';
 ?>
 
 </table>
+
+<?php
+
+if($num_results != 0)
+{
+	echo ("The total sales for the " .$office. " branch is ". $totalRevenue. " Euro");
+}
+
+?>
 
 
 </body>

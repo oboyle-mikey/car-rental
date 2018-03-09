@@ -56,14 +56,9 @@ li a:hover {
 
 <?php
 include ("detail.php"); 
-$Startdate  =  $Enddate =  "";
 
 
-
-echo($startDate);
-
-
-$query = "select offices.address, offices.manager, offfices.sales FROM offices";
+$query = "select offices.address, offices.manager, offices.sales, employees.employee_ID, employees.name FROM employees, offices WHERE employees.employee_ID = offices.manager";
 $result = $db->query($query);
 
 $num_results = mysqli_num_rows ($result);
@@ -73,7 +68,6 @@ $num_results = mysqli_num_rows ($result);
 <tr>
 
 <th style="width:220px" class="auto-style7"> Office</th>
-<th style="width:220px" class="auto-style7"> Address</th>
 <th style="width:220px" class="auto-style7"> Manager</th>
 <th style="width:220px" class="auto-style7"> Total Sales</th>
 
@@ -84,14 +78,14 @@ $num_results = mysqli_num_rows ($result);
 for ($i=0; $i <$num_results; $i++)
 {
 $row = mysqli_fetch_assoc($result);
-
+$totalRevenue = $totalRevenue + $row['sales'];
 ?>
 
 <tr>
 
-<td style="width:219px" class="auto-style7"> <?php echo ($row['address']); ?></td>
-<td style="width:220px" class="auto-style7"> <?php echo ($row['manager']); ?></td>
-<td style="width:220px" class="auto-style7"> <a href=<?php echo ($row['sales']); ?>
+<td style="width:219px" class="auto-style7" align = "center"> <?php echo ($row['address']); ?></td>
+<td style="width:220px" class="auto-style7" align = "center"> <?php echo ($row['name']); ?></td>
+<td style="width:220px" class="auto-style7" align = "center"> <?php echo ($row['sales']); ?>
 
 
 </tr>
@@ -104,6 +98,15 @@ echo '</p>';
 
 
 </table>
+
+<?php
+
+if($num_results != 0)
+{
+	echo ("The total revenue is ". $totalRevenue. " Euro");
+}
+
+?>
 
 </body>
 
