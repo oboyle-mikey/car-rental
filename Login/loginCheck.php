@@ -12,7 +12,7 @@ $password = $_POST['password'];
 echo($employee_ID);
 echo($password);
 
-$_SESSION['employee_ID']= $employee_ID ;
+$_SESSION['employeeID']= $employee_ID ;
 $_SESSION['position']="";
 $_SESSION['failedLogin'] = "";
 
