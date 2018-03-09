@@ -1,6 +1,12 @@
 <?php
 
 	session_start();
+
+	if($_SESSION['login'] != "T")
+	{
+		header("Location: login.php");
+	}
+
    
 ?>
 
@@ -24,8 +30,34 @@
 
 
 
+
+
 </body>
 
-<h2>Brand Content for homepage</h2>
+
+
+
+	
+<?php 
+
+
+include ("detail.php"); 
+
+$employee = $_SESSION['employeeID'];
+
+
+$query = "SELECT name FROM employees WHERE employee_ID = $employee ";
+$result = $db->query($query);
+$num_results = mysqli_num_rows ($result);
+
+$row = mysqli_fetch_assoc($result);
+
+echo "Welcome ".$row['name'];
+
+
+echo $_SESSION['position'];
+echo $_SESSION['login'];
+
+?>
 
 </html>

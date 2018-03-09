@@ -1,6 +1,12 @@
 <?php
 
 	session_start();
+
+	if($_SESSION['login'] != "T")
+	{
+		header("Location: login.php");
+	}
+
    
 ?>
 
@@ -85,7 +91,7 @@ $office = $_POST['office'];
 
 
 
-$idquerry = "select office_ID FROM offices WHERE '$office' = address";
+$idquerry = "select office_ID FROM offices WHERE $office = address";
 $ID = $db->query($idquerry);
 $IDrow = mysqli_fetch_assoc($ID);
 $IDnum = $IDrow['office_ID'];

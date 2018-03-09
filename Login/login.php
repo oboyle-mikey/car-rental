@@ -25,13 +25,18 @@
 
 <h2>Enter Your Login Details</h2>
 
-<h2> <?php echo($_SESSION['failedLogin']);?> </h2>
+<?php 
+if($_SESSION['login'] == "F")
+{
+echo("Incorect login, please try again.");
+}
+;?> 
 
    <table style="width: 28%; height: 100px">
    <tr>
    <td style="width: 130px">Employee ID</td>
    <td class="auto-style15" style="width: 261px">
-   <select name="reservation_ID" style="width: 150px">
+   <select name="employee_ID" style="width: 150px">
        <?php 
            include("detail.php");
            $sql = "SELECT * FROM employees ";
