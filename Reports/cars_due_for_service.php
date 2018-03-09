@@ -77,10 +77,10 @@ $num_results = mysqli_num_rows ($result);
 
 <tr>
 
-<th style="width:219px; height: 23px;" class="auto-style7"> Employee Name </th>
-<th style="width:220px; height: 23px;" class="auto-style4"> Hours Worked</th>
-<th style="width:220px; height: 23px;" class="auto-style4"> Commission</th>
-<th style="width:220px; height: 23px;" class="auto-style4"> Total Pay</th>
+<th style="width:219px; height: 23px;" class="auto-style7"> Fleet ID </th>
+<th style="width:220px; height: 23px;" class="auto-style4"> model</th>
+<th style="width:220px; height: 23px;" class="auto-style4"> Registration</th>
+<th style="width:220px; height: 23px;" class="auto-style4"> Miles Since Last Maintanance</th>
 
 </tr>
 
@@ -89,15 +89,15 @@ $num_results = mysqli_num_rows ($result);
 for ($i=0; $i <$num_results; $i++)
 {
 $row = mysqli_fetch_assoc($result);
-$totalRevenue = $totalRevenue + $row['totalSales'];
+
 ?>
 
 <tr>
 
-<td style="width:219px" class="auto-style7" align="center"> <?php echo ($row['name']); ?></td>
-<td style="width:220px" class="auto-style7" align="center"> <?php echo ($row['hoursWorked']); ?></td>
-<td style="width:220px" class="auto-style7" align="center"> <?php echo ($row['commission']); ?></td>
-<td style="width:220px" class="auto-style7" align="center"> <?php echo ($row['totalSales']); ?></td>
+<td style="width:219px" class="auto-style7" align="center"> <?php echo ($row['fleet_ID']); ?></td>
+<td style="width:220px" class="auto-style7" align="center"> <?php echo ($row['model']); ?></td>
+<td style="width:220px" class="auto-style7" align="center"> <?php echo ($row['car_registration']); ?></td>
+<td style="width:220px" class="auto-style7" align="center"> <?php echo ($row['miles_since_maintanance']); ?></td>
 
 </tr>
 
@@ -107,15 +107,6 @@ echo '</p>';
 ?>
 
 </table>
-
-<?php
-
-if($num_results != 0)
-{
-	echo ("The total sales for the " .$office. " branch is ". $totalRevenue. " Euro");
-}
-
-?>
 
 
 </body>
