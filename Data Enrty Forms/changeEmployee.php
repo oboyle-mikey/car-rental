@@ -1,10 +1,12 @@
 <?php
+	session_start();
+	
+	//initial query to get data for all employees
 	
 	include("detail.php");
 	$q = "SELECT * from employees";
 	$result1 = $db->query($q);
-	session_start();
-   
+	
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -32,7 +34,7 @@
 			<select name="changename" style="width:161px; height: 20px;" class="auto-style8" required>
 			
 			<?php while($row1 = mysqli_fetch_array($result1)){?>}
-			<option value="<?php echo $row1['name']; ?>"> <?php  echo $row1['employee_ID'], ". ", $row1['name']; ?></option>
+			<option value="<?php echo $row1['employee_ID']; ?>"> <?php  echo $row1['employee_ID'], ". ", $row1['name']; ?></option>
 			
 			<?php }?>
 			
@@ -46,32 +48,35 @@
 	
 </form>
 
+
+
+<p><br> </br></p>
+
+
+
 <?php
 
-// query db for the chosesn employee
+	if(isset($_POST['submit']))
+	{
+	
+		$changename = $_POST['changename'];
+	
+		// query db for the chosesn employee
+		
+		$sql = "SELECT * from employees WHERE employee_ID = $changename";
+		$result = $db->query($sql);
+		$row = mysqli_fetch_array($result);
+		
+		$id = $row['employee_ID'];
+		$name = $row['name'];
+		$position = $row['position'];
+		$grade= $row['grade'];
+		$base_salery = $row['base_salery'];
+		$commission = $row['commission'];
 
-include("detail.php");
-$sql = "SELECT * from employees WHERE name = changename";
-$result = $db->query($sql);
-$row = mysqli_fetch_array($result);
-
-// get data from db
-
-$id = $row['employee_ID']
-
-$name = $row['name'];
-
-$position = $row['position'];
-
-$grade= $row['grade'];
-
-$base_salary = $row['base_salary'];
-
-$commission= $row['commission'];
-
-
+		
+	}
 ?>
-
 
 <form method="post" style="height: 379px" action="updateEmployeePost.php">
 
@@ -81,7 +86,7 @@ $commission= $row['commission'];
 	<tr>
 		<td style="width: 130px">Employee ID</td>
 		<td style="width: 253px">
-			<input type="text" name="name" value="<?php echo $id; ?>" required/></td>
+			<input type="text" name="employee_ID" value="<?php echo $id; ?>" required/></td>
 	</tr>
 	<tr>
 		<td style="width: 130px">Name</td>
@@ -100,9 +105,9 @@ $commission= $row['commission'];
 			<input type="text" name="grade" value="<?php echo $grade; ?>" required/></td>
 	</tr>
 	<tr>
-		<td style="width: 130px">Base Salery</td>
+		<td style="width: 130px">Base Salary</td>
 		<td style="width: 253px">
-			<input type="text" name="base_salary" value="<?php echo $base_salary; ?>"  required/></td>
+			<input type="text" name="base_salery" value="<?php echo $base_salery; ?>"  required/></td>
 	</tr>
 	<tr>
 		<td style="width: 130px">Commission Rate</td>
@@ -112,7 +117,7 @@ $commission= $row['commission'];
 	
 </table>
 
-<input name="edit" type="submit" value="Edit" />
+<input name="edit" type="submit" value="Submit" />
 
 </div>
 
@@ -121,5 +126,4 @@ $commission= $row['commission'];
 </body>
 
 </html>
-
 

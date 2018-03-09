@@ -23,8 +23,6 @@
 
 <form method="post" style="height: 379px" action="removeEmployeePost.php">
 
-
-
 <h2>Remove Employee</h2>
 
 <table style="width: 50%; height: 79px">
@@ -45,7 +43,7 @@
 
 </table>
 
-	<input name="Button1" type="submit" value="Delete" />
+	<input name="submit" type="submit" value="Delete" />
 	
 	
 </form>
