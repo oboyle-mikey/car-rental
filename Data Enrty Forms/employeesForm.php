@@ -25,11 +25,8 @@
 	<tr>
 		<td style="width: 130px">Office ID</td>
 				<td class="auto-style15" style="width: 261px">
-<<<<<<< HEAD
-		<select name="EventID" style="width: 150px">
-=======
+
 		<select name="office_ID" style="width: 150px">
->>>>>>> bd11825cd674b896811c47a222c319954f2564e9
 			
 			
 			<?php 

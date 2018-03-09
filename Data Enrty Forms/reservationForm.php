@@ -44,14 +44,20 @@
 	<tr>
 		<td style="width: 130px">Car Group Name</td>
 		<td style="width: 253px">
-			<input name="car_group_name" type="text" required/>
+			<select name="car_group_name" required style="width: 83px"/>
+			<option>A1</option>
+			<option>A2</option>
+			<option>A3</option>
+			<option>B1</option>
+			<option>B2</option>
+			<option>B3</option>
 		</td>
 	</tr>
 	<tr>
 		<td style="width: 130px">Pickup Location</td>
 		<td style="width: 253px">
-<<<<<<< HEAD
-		<select name="EventID" style="width: 150px">
+
+		<select name="location" style="width: 150px">
 			
 			
 			<?php 
@@ -74,9 +80,7 @@
 		</td>
 	</tr>
 		
-=======
 
->>>>>>> bd11825cd674b896811c47a222c319954f2564e9
 	</table>
 
 	<input name="Button1" type="submit" value="Submit" />
