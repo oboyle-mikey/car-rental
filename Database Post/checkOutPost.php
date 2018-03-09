@@ -1,7 +1,12 @@
 <?PHP
 
-include ("detail.php"); 
+	if($_SESSION['login'] != "T")
+	{
+		header("Location: login.php");
+	}
 
+
+include ("detail.php"); 
 session_start();
 $_SESSION['form_validation_err'] = 0;
 

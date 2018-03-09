@@ -1,5 +1,11 @@
 <?PHP
 
+	if($_SESSION['login'] != "T")
+	{
+		header("Location: login.php");
+	}
+
+
 include ("detail.php"); 
 
 session_start();

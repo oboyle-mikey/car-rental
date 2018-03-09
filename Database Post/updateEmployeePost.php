@@ -1,5 +1,10 @@
-<?php
-	
+<?php 
+session_start();
+if($_SESSION['login'] != "T")
+{
+	header("Location: login.php");
+}
+
 	include("detail.php");
 	
 	echo $_POST['employee_ID'];
@@ -21,9 +26,9 @@
 	
 	$q = "UPDATE employees SET name = '$name' , position ='$position', grade = '$grade', base_salery = '$base_salery', commission = '$commission' WHERE employee_ID = '$id' ";
 	
-	echo $q
+	echo $q;
 	
-	query($q)
+	query($q);
 	
 	
 	session_start();

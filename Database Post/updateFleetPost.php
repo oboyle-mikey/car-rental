@@ -1,5 +1,10 @@
-<?php
-	
+<?php 
+session_start();
+if($_SESSION['login'] != "T")
+{
+	header("Location: login.php");
+}
+
 	include("detail.php");
 	
 	$id = $_POST['fleet_ID'];
@@ -16,6 +21,6 @@
 	
 	query($q)	
 	
-	session_start();
+
    
 ?>

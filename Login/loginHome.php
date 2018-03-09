@@ -22,12 +22,6 @@
 
 <body>
 
-		<div class = "topnav">
-				<a> Executive Cars Ltd</ab>
-				<a class="active" href = "loginHome.php">Home</a>
-				<a href = "login.php">Login</a>
-			</div>
-
 
 
 
@@ -35,7 +29,11 @@
 </body>
 
 
+<<<<<<< HEAD
 
+=======
+<?php include('navbar.php') ?>
+>>>>>>> a2b29b0ad5700faa84d45eb02733a65d15fc4a3b
 
 	
 <?php 
@@ -55,9 +53,12 @@ $row = mysqli_fetch_assoc($result);
 echo "Welcome ".$row['name'];
 
 
+<<<<<<< HEAD
 echo $_SESSION['position'];
 echo $_SESSION['login'];
 
+=======
+>>>>>>> a2b29b0ad5700faa84d45eb02733a65d15fc4a3b
 ?>
 
 </html>
