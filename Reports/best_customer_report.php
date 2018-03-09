@@ -1,3 +1,5 @@
+TEST 
+
 <?php
 
 	session_start();
