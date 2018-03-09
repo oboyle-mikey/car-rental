@@ -48,11 +48,12 @@ if(empty($_POST['end_date'])){
 	$office_ID = 0;   //set based on log variable
 	$client_ID = 0;   //set based on selection drop down in form
 
-/*
-For start and end mileage maybe save it initially as 0, then update it from the check-out and check-in page
-*/
-
-//gets fleet ID	This select statement doesn't check availability
+	
+//Auto Assign Car if Available
+$sql = "SELECT fleet_ID, car_group_name FROM fleet WHERE fleet_ID NOT IN (SELECT fleet_ID FROM reservations WHERE end_date > '$start_date' AND start_date < '$end_date' ) AND car_group_name = '$car_group_name' LIMIT 1";
+$resultQ = $db->query($sql);
+echo $sql;
+$num_results = mysqli_num_rows($resultQ);
 
 if($num_results == 1){
 	$resultQ = mysqli_fetch_assoc($result);
@@ -64,16 +65,20 @@ if($num_results == 1){
 	$fleet_ID = -1;
 }
 
-//Insert into database
+
 //$_SESSION['access'] is the value being posted for employee ID
 if($_SESSION['form_validation_err'] == 0 && $fleet_ID != -1){
 
+	//Insert into database
 	$q  = "INSERT INTO reservations (";
 	$q .= "fleet_ID, client_ID, employee_ID, office_ID, start_date, end_date, start_mileage, end_mileage, rate_ID, price";
 	$q .= ") VALUES (";
 	$q .= "'$fleet_ID','$client_ID','$employee', '$location', '$start_date', '$end_date', '$start_mileage', '$end_mileage', '$rate_ID', '$price')";
 
 	$result = $db->query($q);
+
+	//Generate and display quote
+	
 
 }else{
 	//Throw no cars available error

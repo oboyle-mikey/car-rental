@@ -28,11 +28,28 @@
 <h2> <?php echo($_SESSION['failedLogin']);?> </h2>
 
    <table style="width: 28%; height: 100px">
-        <tr>
-            <td style="width: 130px">Employee Number</td>
-            <td style="width: 253px">
-                <input name="employee_ID" type="text" required/></td>
-        </tr>
+   <tr>
+   <td style="width: 130px">Employee ID</td>
+   <td class="auto-style15" style="width: 261px">
+   <select name="reservation_ID" style="width: 150px">
+       <?php 
+           include("detail.php");
+           $sql = "SELECT * FROM employees ";
+           $result = $db->query($sql);
+   
+           while($row = mysqli_fetch_assoc($result)) {
+          ?>
+   
+           <option value="<?php echo $row['employee_ID'];?>"> <?php echo $row['name'];?>  </option>
+   
+       <?php
+       }
+       ?>
+               
+   </select>
+   </td>
+   
+   </tr>
         <tr>
             <td style="width: 130px">Password</td>
             <td style="width: 253px">
