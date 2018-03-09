@@ -27,27 +27,35 @@ function test_input($data){
 if($_SESSION['form_validation_err'] == 0){
 
 	//Update End mileage
-	$t = "UPDATE reservations set end_mileage = $end_mileage WHERE reservations_ID = $reservation_ID";
+	$t = "UPDATE reservations set end_mileage = $end_mileage WHERE reservation_ID = $reservation_ID";
 	$result = $db->query($t);
 	echo $t;
+	echo('\n');
+	echo('1');
 
 	//Calculate number of days rented
-	$t = "SELECT datediff(`end_date`, `start_date`) AS 'days' FROM reservations WHERE `reservation_ID` = 1000000034";
+	$t = "SELECT datediff(`end_date`, `start_date`) AS 'days' FROM reservations WHERE `reservation_ID` = $reservation_ID";
 	$result = $db->query($t);
 	echo $t;
+	echo('\n');
+	echo('2');
 	$row = mysqli_fetch_assoc($result);
 	$days = $row['days'];
 
 
 	//Update days rented
-	$t = "UPDATE reservations set daysRented = $daysRented WHERE reservation_ID = $reservation_ID";
+	$t = "UPDATE reservations set daysRented = $daysWHERE reservation_ID = $reservation_ID";
 	$result = $db->query($t);
 	echo $t;
+	echo('\n');
+	echo('3');
 
 	//Calculate miles driven
 	$t = "SELECT start_mileage FROM reservations WHERE reservation_ID = $reservation_ID";
 	$result = $db->query($t);
 	echo $t;
+	echo('\n');
+	echo('4');
 	$row = mysqli_fetch_assoc($result);
 	$start_mileage = $row['start_mileage'];
 	$miles = $end_mileage - $start_mileage;
@@ -56,6 +64,8 @@ if($_SESSION['form_validation_err'] == 0){
 	$t = "SELECT rate_ID FROM reservations WHERE reservation_ID = $reservation_ID";
 	$result = $db->query($t);
 	echo $t;
+	echo('\n');
+	echo('5');
 	$row = mysqli_fetch_assoc($result);
 	$rate_ID = $row['rate_ID'];
 	
@@ -64,6 +74,8 @@ if($_SESSION['form_validation_err'] == 0){
 	$t = "SELECT `rate_per_mile`, `rate_per_day` FROM rates WHERE `rate_ID` = (SELECT rate_ID FROM reservations WHERE reservation_ID = $reservation_ID)";
 	$result = $db->query($t);
 	echo $t;
+	echo('\n');
+	echo('6');
 	$row = mysqli_fetch_assoc($result);
 	$mile_rate = $row['rate_per_mile'];
 	$day_rate = $row['rate_per_day'];
@@ -74,19 +86,25 @@ if($_SESSION['form_validation_err'] == 0){
 	$t = "UPDATE reservations set price = $charge WHERE reservation_ID = $reservation_ID";
 	$result = $db->query($t);
 	echo $t;
+	echo('\n');
+	echo('7');
 
 	//Update time returned
 	//Valet car
 
 	//Update Maintanance Window
-	$t = "UPDATE reservations set miles_since_maintanance = miles_since_maintanance + $miles WHERE reservation_ID = $reservation_ID";
+	$t = "UPDATE fleet set miles_since_maintanance = miles_since_maintanance + $miles WHERE reservation_ID = $reservation_ID";
 	$result = $db->query($t);
 	echo $t;
+	echo('\n');
+	echo('8');
 
-	//Check Maintanance Window
+	//Check Maintanance Window NOT WORKING
 	$t = "SELECT miles_since_maintanance, maintanance_interval FROM fleet WHERE fleet_ID = (SELECT fleet_ID From reservations Where reservation_ID = $reservation_ID)";
 	$result = $db->query($t);
 	echo $t;
+	echo('\n');
+	echo('9');
 	$mile_since_maintanance = $row['miles_since_maintanance'];
 	$maintanance_interval = $row['maintanance_interval'];
 	if($mile_since_maintanance > $maintanance_interval){
@@ -97,10 +115,14 @@ if($_SESSION['form_validation_err'] == 0){
 	$t = "UPDATE employees set totalSales = totalSales + $charge WHERE employee_ID = $employee_ID";
 	$result = $db->query($t);
 	echo $t;
+	echo('\n');
+	echo('10');
 
 	$t = "UPDATE offices set sales = sales + $charge WHERE office_ID = $office_ID";
 	$result = $db->query($t);
 	echo $t;
+	echo('\n');
+	echo('11');
 
 	//Get client name, email etc to post on an invoice
 	$t = "SELECT name, address, county FROM clients WHERE ";
@@ -115,7 +137,7 @@ if($_SESSION['form_validation_err'] == 0){
 	$_SESSION['client_days_rented'] = $days;
 	$_SESSION['client_miles_rate'] = $mile_rate;
 	$_SESSION['client_days_rate'] = $day_rate;
-	header('Location: invoice.php');
+	
 
 
 }else{
