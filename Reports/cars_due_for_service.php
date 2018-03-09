@@ -66,7 +66,7 @@ include ("detail.php");
 
 
 
-$query = "select employees.name, employees.hoursWorked, employees.commission, employees.totalSales FROM employees WHERE '$IDnum' = employees.office_ID";
+$query = "Select fleet_ID, model, maintanance_interval, miles_since_maintanance, car_registration FROM fleet where miles_since_maintanance > maintanance_interval";
 $result = $db->query($query);
 $num_results = mysqli_num_rows ($result);
 
