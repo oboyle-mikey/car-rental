@@ -23,7 +23,7 @@ if($_SESSION['login'] != "T")
 
 <?php include('navbar.php') ?>
 
-<form method="post" style="height: 379px" action="checkOutPostPost.php">
+<form method="post" style="height: 379px" action="checkOutPost.php">
 
 <h2>Check Out</h2>
 
