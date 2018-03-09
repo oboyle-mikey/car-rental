@@ -25,6 +25,8 @@
 
 <h2>Enter Your Login Details</h2>
 
+<h2> <?php echo($_SESSION['failedLogin']);?> </h2>
+
    <table style="width: 28%; height: 100px">
    <tr>
    <td style="width: 130px">Employee ID</td>
