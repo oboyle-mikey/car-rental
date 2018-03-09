@@ -60,6 +60,7 @@ li a:hover {
 
 
 
+<form method="post" action="weekly_revenue_report.php">
 <p class="auto-style1">Start Date</p>
 
 <td style="width: 125px"></td>
@@ -69,19 +70,24 @@ li a:hover {
 <p class="auto-style1">End Date</p>
 <input name="Enddate" type="date" />
 
+<input name="Submit" type="submit" value="Submit" /><input name="Reset" type="button" value="Reset" /></td>
+
+</form>
+
 <table align="center">
 
 <?php
 include ("detail.php"); 
 
-$Startdate  =  $Enddate =  "";
-
-$startDate = Startdate;
-$endDate = Enddate;
+$startdate  =  $enddate =  "";
 
 
-$query = "Select fleet.car_registration, fleet.fleet_ID, reservations.fleet_ID, reservations.start_date, reservations.end_date, reservations.daysRented from reservations, fleet WHERE reservations.end_date > '$endDate' AND reservations.start_date < '$startDate";
-//Select fleet.car_registration, fleet.fleet_ID, reservations.fleet_ID, reservations.start_date, reservations.end_date, reservations.daysRented from reservations, fleet Where 01/01/2018 <= reservations.start_date AND 10/10/2018>= reservations.end_date
+$startDate = $_POST['Startdate'];
+$endDate = $_POST['Enddate'];
+
+
+$query = "Select reservations.end_date, reservations.fleet_ID, reservations.price, reservations.daysRented, fleet.fleet_ID, fleet.car_registration from reservations, fleet WHERE fleet.fleet_ID = reservations.fleet_ID AND '$startDate' <= reservations.end_date AND '$endDate' >= reservations.end_date";
+
 $result = $db->query($query);
 
 $num_results = mysqli_num_rows ($result);
@@ -101,14 +107,14 @@ $num_results = mysqli_num_rows ($result);
 for ($i=0; $i <$num_results; $i++)
 {
 $row = mysqli_fetch_assoc($result);
-
+$totalRevenue = $totalRevenue + $row['price'];
 ?>
 
 <tr>
 
-<td style="width:219px" class="auto-style7"> <?php echo ($row['']); ?></td>
-<td style="width:220px" class="auto-style7"> <a href=<?php echo ($row['']); ?></td>
-<td style="width:220px" class="auto-style7"> €400.00</td>
+<td style="width:219px" class="auto-style7" align = "center" > <?php echo ($row['car_registration']); ?></td>
+<td style="width:220px" class="auto-style7" align = "center"> <?php echo ($row['daysRented']); ?></td>
+<td style="width:220px" class="auto-style7" align = "center"> <?php echo ($row['price']); ?></td>
 
 </tr>
 
@@ -120,6 +126,14 @@ echo '</p>';
 
 </table>
 
+<?php
+
+if($num_results != 0)
+{
+	echo ("The total weekly revenue is ". $totalRevenue. " Euro");
+}
+
+?>
 </body>
 
 </html>

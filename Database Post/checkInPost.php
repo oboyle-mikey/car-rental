@@ -1,3 +1,5 @@
+TEST
+
 <?PHP
 
 include ("detail.php"); 
