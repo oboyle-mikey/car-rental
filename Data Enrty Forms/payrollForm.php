@@ -44,7 +44,6 @@
 <?php
 	}
 	$pay_ID = $_POST['employee_ID'];
-	echo $pay_ID;
 
 ?>
 					</select><input name="getpay" type="submit" value="Calculate Pay" style="width: 94px" /></td>
@@ -78,7 +77,6 @@
 					$commission_rate = mysqli_fetch_assoc($result);
 					$commission_rate = $commission_rate['commission'];
 					$commission = ($commission_rate/100)*$sales;
-					echo $commission_rate;
 					
 			//gets pay		
 			$sql = "SELECT base_salery from employees WHERE employee_ID = '".$pay_ID."'";
