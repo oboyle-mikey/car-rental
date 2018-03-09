@@ -78,9 +78,9 @@ $num_results = mysqli_num_rows ($result);
 <tr>
 
 <th style="width:219px; height: 23px;" class="auto-style7"> Fleet ID </th>
-<th style="width:220px; height: 23px;" class="auto-style4"> model</th>
+<th style="width:220px; height: 23px;" class="auto-style4"> Model</th>
 <th style="width:220px; height: 23px;" class="auto-style4"> Registration</th>
-<th style="width:220px; height: 23px;" class="auto-style4"> Miles Since Last Maintanance</th>
+<th style="width:220px; height: 23px;" class="auto-style4"> Miles Since Last Service</th>
 
 </tr>
 
