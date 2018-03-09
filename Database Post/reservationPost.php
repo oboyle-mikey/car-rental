@@ -81,6 +81,7 @@ if($_SESSION['form_validation_err'] == 0 && $fleet_ID != -1){
 }else{
 	//Throw no cars available error
 	echo("There are no cars available");
+	
 }
 
 ?>
