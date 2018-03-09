@@ -1,3 +1,15 @@
+<?php
+
+	session_start();
+
+	if($_SESSION['login'] != "T")
+	{
+		header("Location: login.php");
+	}
+
+   
+?>
+
 <div class = "topnav">
 <a> Executive Cars Ltd</ab>
 <a class="active" href = "Home.php">Home</a>

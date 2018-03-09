@@ -1,5 +1,15 @@
 <?php
+
+
 	session_start();
+
+	if($_SESSION['login'] != "T")
+	{
+		header("Location: login.php");
+	}
+
+   
+
 	
 	//initial query to get data for all employees
 	

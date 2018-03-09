@@ -1,9 +1,15 @@
 <?php
-	
+		session_start();
+
+		if($_SESSION['login'] != "T")
+		{
+			header("Location: login.php");
+		}
+
 	include("detail.php");
 	$q = "SELECT * from fleet";
 	$result1 = $db->query($q);
-	session_start();
+
    
 ?>
 

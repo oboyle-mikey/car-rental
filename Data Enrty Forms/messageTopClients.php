@@ -1,6 +1,11 @@
 <?php
 
-    session_start();
+session_start();
+
+if($_SESSION['login'] != "T")
+{
+    header("Location: login.php");
+}
     include('detail.php');
     $query = "SELECT email FROM clients Order By totalIncome LIMIT 5";
     $result = $db->query($query);
