@@ -46,9 +46,9 @@ if(empty($_POST['end_date'])){
 
 	$employee_ID = 0; //set based on log variable
 	$office_ID = 0;   //set based on log variable
-	$client_ID = 0;   //set based on selection drop down in form
+	$client_ID = $name;   //set based on selection drop down in form
 
-	
+
 //Auto Assign Car if Available
 $sql = "SELECT fleet_ID, car_group_name FROM fleet WHERE fleet_ID NOT IN (SELECT fleet_ID FROM reservations WHERE end_date > '$start_date' AND start_date < '$end_date' ) AND car_group_name = '$car_group_name' LIMIT 1";
 $resultQ = $db->query($sql);
@@ -73,7 +73,7 @@ if($_SESSION['form_validation_err'] == 0 && $fleet_ID != -1){
 	$q  = "INSERT INTO reservations (";
 	$q .= "fleet_ID, client_ID, employee_ID, office_ID, start_date, end_date, start_mileage, end_mileage, rate_ID, price";
 	$q .= ") VALUES (";
-	$q .= "'$fleet_ID','$client_ID','$employee', '$location', '$start_date', '$end_date', '$start_mileage', '$end_mileage', '$rate_ID', '$price')";
+	$q .= "'$fleet_ID','$client_ID','$employee_ID', '$location', '$start_date', '$end_date', '$start_mileage', '$end_mileage', '$rate_ID', '$price')";
 
 	$result = $db->query($q);
 
