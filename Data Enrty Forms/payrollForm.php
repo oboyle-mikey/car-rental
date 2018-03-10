@@ -1,11 +1,8 @@
 <?php
 
-<<<<<<< HEAD
 	session_start();
 	$_SESSION['pay_ID'] = "";
-   #<form method="post" style="height: 379px" action="payrollPost.php">
 
-=======
 session_start();
 
 if($_SESSION['login'] != "T")
@@ -13,7 +10,6 @@ if($_SESSION['login'] != "T")
 	header("Location: login.php");
 }
    
->>>>>>> a2b29b0ad5700faa84d45eb02733a65d15fc4a3b
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
