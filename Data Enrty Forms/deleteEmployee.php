@@ -1,9 +1,15 @@
 <?php
-	
+		session_start();
+
+		if($_SESSION['login'] != "T")
+		{
+			header("Location: login.php");
+		}
+
 	include("detail.php");
 	$q = "SELECT * from employees";
 	$result1 = $db->query($q);
-	session_start();
+
    
 ?>
 
@@ -21,13 +27,9 @@
 
 <body>
 
-<form method="post" style="height: 379px" action="employeesPost.php">
-
-
+<form method="post" style="height: 379px" action="removeEmployeePost.php">
 
 <h2>Remove Employee</h2>
-
-<form method="post" style="height: 379px" action="employeesPost.php">
 
 <table style="width: 50%; height: 79px">
 	<tr>
@@ -37,7 +39,7 @@
 			
 			<?php while($row1 = mysqli_fetch_array($result1)){?>
 			
-				<option value="<?php echo $row1['name']; ?>"> <?php  echo $row1['employee_ID'], ". ", $row1['name']; ?></option>
+			<option value="<?php echo $row1['employee_ID']; ?>"> <?php  echo $row1['employee_ID'], ". ", $row1['name']; ?></option>
 		
 			<?php }?>
 			
@@ -47,7 +49,8 @@
 
 </table>
 
-<input name="Button1" type="submit" value="Delete" />
+	<input name="submit" type="submit" value="Delete" />
+	
 	
 </form>
 

@@ -1,6 +1,11 @@
 <?php
 
-	session_start();
+session_start();
+
+if($_SESSION['login'] != "T")
+{
+	header("Location: login.php");
+}
    
 ?>
 
@@ -32,7 +37,7 @@
 	<tr>
 		<td style="width: 130px">Car Group name</td>
 		<td style="width: 253px">
-			<select name="location" style="width: 150px">
+			<select name="car_group_name" style="width: 150px">
 			
 			
 			<?php 
@@ -74,7 +79,7 @@
 	<tr>
 		<td style="width: 130px">Office Location</td>
 				<td class="auto-style15" style="width: 261px">
-		<select name="EventID" style="width: 150px">
+		<select name="office_ID" style="width: 150px">
 			
 			
 			<?php 

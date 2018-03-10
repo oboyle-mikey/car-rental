@@ -1,6 +1,11 @@
 <?php
 
-	session_start();
+session_start();
+
+if($_SESSION['login'] != "T")
+{
+	header("Location: login.php");
+}
    
 ?>
 
@@ -25,7 +30,6 @@
 	<tr>
 		<td style="width: 130px">Office ID</td>
 				<td class="auto-style15" style="width: 261px">
-
 		<select name="office_ID" style="width: 150px">
 			
 			

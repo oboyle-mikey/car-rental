@@ -1,10 +1,15 @@
 <?php
+		session_start();
+
+		if($_SESSION['login'] != "T")
+		{
+			header("Location: login.php");
+		}
 
 	include("detail.php");
 	$q = "SELECT * from fleet";
 	$result1 = $db->query($q);
 
-	session_start();
    
 ?>
 
@@ -22,18 +27,22 @@
 
 <body>
 
+<form method="post" style="height: 379px" action="removeCarPost.php">
 
-<h2>Delete Car</h2>
+
+
+<h2>Remove Employee</h2>
 
 <table style="width: 50%; height: 79px">
 	<tr>
-		<td style="width: 130px">Enter car id and model:</td>
+		<td style="width: 130px">Enter car name:</td>
 		<td style="width: 253px">
-			<select name="name" style="width:161px; height: 20px;" class="auto-style8" required>
+			<select name="car" style="width:161px; height: 20px;" class="auto-style8" required>
 			
-			<?php while($row1 = mysqli_fetch_array($result1)){?>}
-			<option value="<?php echo $row1['fleet_ID']; ?>"> <?php echo $row1['fleet_ID'], ". ", $row1['model']; ?></option>
+			<?php while($row1 = mysqli_fetch_array($result1)){?>
 			
+			<option value="<?php echo $row1['fleet_ID']; ?>"> <?php  echo $row1['fleet_ID'], ". ", $row1['model']; ?></option>
+		
 			<?php }?>
 			
 			</select>
@@ -43,6 +52,10 @@
 </table>
 
 	<input name="Button1" type="submit" value="Delete" />
+	
+	
+</form>
+
 
 </body>
 

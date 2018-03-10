@@ -1,10 +1,16 @@
 <?php
+	
+	session_start();
+
+	if($_SESSION['login'] != "T")
+	{
+		header("Location: login.php");
+	}
 
 	include("detail.php");
-	$q = "SELECT * from offices";
+	$q = "SELECT * from offices ";
 	$result1 = $db->query($q);
 
-	session_start();
    
 ?>
 
@@ -22,18 +28,22 @@
 
 <body>
 
+<form method="post" style="height: 379px" action="removeOfficePost.php">
 
-<h2>Delete Office</h2>
+
+
+<h2>Remove Employee</h2>
 
 <table style="width: 50%; height: 79px">
 	<tr>
-		<td style="width: 130px">Enter office location:</td>
+		<td style="width: 130px">Enter employee name:</td>
 		<td style="width: 253px">
-			<select name="name" style="width:161px; height: 20px;" class="auto-style8" required>
+			<select name="address" style="width:161px; height: 20px;" class="auto-style8" required>
 			
-			<?php while($row1 = mysqli_fetch_array($result1)){?>}
-			<option value="<?php echo $row1['address']; ?>"> <?php echo $row1['address']; ?></option>
+			<?php while($row1 = mysqli_fetch_array($result1)){?>
 			
+			<option value="<?php echo $row1['office_ID']; ?>"> <?php  echo $row1['address']; ?></option>
+		
 			<?php }?>
 			
 			</select>
@@ -42,11 +52,10 @@
 
 </table>
 
-	<input name="Button1" type="submit" value="Delete" />
-
-
-
-
+	<input name="submit" type="submit" value="Delete" />
+	
+	
+</form>
 
 
 </body>

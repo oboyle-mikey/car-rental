@@ -1,6 +1,11 @@
 <?php
 
-	session_start();
+session_start();
+
+if($_SESSION['login'] != "T")
+{
+	header("Location: login.php");
+}
    
 ?>
 
@@ -18,17 +23,34 @@
 
 <?php include('navbar.php') ?>
 
-<form method="post" style="height: 379px" action="checkOutPostPost.php">
+<form method="post" style="height: 379px" action="checkOutPost.php">
 
 <h2>Check Out</h2>
 
 
 <table style="width: 28%; height: 322px">
-	<tr>
-		<td style="width: 130px">Reservation ID</td>
-		<td style="width: 253px">
-			<input type="text" name="reservation_ID" required/></td>
-	</tr>
+<tr>
+<td style="width: 130px">Reservation ID</td>
+<td class="auto-style15" style="width: 261px">
+<select name="reservation_ID" style="width: 150px">
+	<?php 
+		include("detail.php");
+		$sql = "SELECT reservation_ID, name FROM reservations, clients WHERE start_mileage = 0 AND reservations.client_ID = clients.client_ID";
+		$result = $db->query($sql);
+
+		while($row = mysqli_fetch_assoc($result)) {
+	   ?>
+
+		<option value="<?php echo $row['reservation_ID'];?>"> <?php echo $row['name'];?>  </option>
+
+	<?php
+	}
+	?>
+			
+</select>
+</td>
+
+</tr>
 	<tr>
 		<td style="width: 130px">Start Mileage</td>
 		<td style="width: 253px">
