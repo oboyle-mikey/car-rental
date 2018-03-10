@@ -1,6 +1,12 @@
 <?php
 
 	session_start();
+
+	if($_SESSION['login'] != "T")
+	{
+		header("Location: login.php");
+	}
+
    
 ?>
 
@@ -16,16 +22,27 @@
 
 <body>
 
-		<div class = "topnav">
-				<a> Executive Cars Ltd</ab>
-				<a class="active" href = "loginHome.php">Home</a>
-				<a href = "login.php">Login</a>
-			</div>
-
 
 
 </body>
 
-<h2>Brand Content for homepage</h2>
+<?php include('navbar.php'); 
+
+
+include ("detail.php"); 
+
+$employee_ID = $_SESSION['employee_ID'];
+
+
+$query = "SELECT name FROM employees WHERE employee_ID = '$employee_ID' ";
+$result = $db->query($query);
+$num_results = mysqli_num_rows ($result);
+
+$row = mysqli_fetch_assoc($result);
+
+echo "Welcome ".$row['name'];
+
+echo "  " .$_SESSION['position'];
+?>
 
 </html>

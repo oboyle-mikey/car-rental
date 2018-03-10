@@ -1,7 +1,6 @@
-<?php
+<?php 
+session_start();
 
-	session_start();
-   
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -25,12 +24,30 @@
 
 <h2>Enter Your Login Details</h2>
 
+
    <table style="width: 28%; height: 100px">
-        <tr>
-            <td style="width: 130px">Employee Number</td>
-            <td style="width: 253px">
-                <input name="employee_ID" type="text" required/></td>
-        </tr>
+   <tr>
+   <td style="width: 130px">Employee ID</td>
+   <td class="auto-style15" style="width: 261px">
+   <select name="employee_ID" style="width: 150px">
+       <?php 
+           include("detail.php");
+           $sql = "SELECT * FROM employees ";
+           $result = $db->query($sql);
+   
+           while($row = mysqli_fetch_assoc($result)) {
+          ?>
+   
+           <option value="<?php echo $row['employee_ID'];?>"> <?php echo $row['name'];?>  </option>
+   
+       <?php
+       }
+       ?>
+               
+   </select>
+   </td>
+   
+   </tr>
         <tr>
             <td style="width: 130px">Password</td>
             <td style="width: 253px">
